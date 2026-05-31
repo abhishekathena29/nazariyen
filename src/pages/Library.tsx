@@ -41,12 +41,12 @@ export default function Library() {
 
   return (
     <div className="flex h-full overflow-hidden">
-      <section className="flex-1 overflow-y-auto px-margin-page py-10 custom-scrollbar">
+      <section className="flex-1 overflow-y-auto px-4 md:px-margin-page py-6 md:py-10 custom-scrollbar">
         {/* Hero */}
-        <div className="relative rounded-3xl overflow-hidden mb-12 bg-gradient-to-br from-primary to-primary-container p-12 min-h-[240px] flex items-center">
+        <div className="relative rounded-3xl overflow-hidden mb-8 md:mb-12 bg-gradient-to-br from-primary to-primary-container p-6 md:p-12 min-h-[200px] md:min-h-[240px] flex items-center">
           <div className="relative z-10 max-w-xl">
-            <h2 className="text-4xl font-display font-bold text-white mb-4">Your Digital Library</h2>
-            <p className="text-white/80 text-lg leading-relaxed">
+            <h2 className="text-2xl md:text-4xl font-display font-bold text-white mb-3 md:mb-4">Your Digital Library</h2>
+            <p className="text-white/80 text-base md:text-lg leading-relaxed">
               Access the complete NCERT collection anytime. Refined for your success.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">

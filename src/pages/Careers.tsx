@@ -24,10 +24,10 @@ export default function Careers() {
   const [pathwayFor, setPathwayFor] = useState<string | null>(null)
 
   return (
-    <div className="h-full overflow-y-auto custom-scrollbar p-margin-page">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+    <div className="h-full overflow-y-auto custom-scrollbar p-4 md:p-margin-page">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 md:mb-12">
         <div className="max-w-2xl">
-          <h2 className="font-display text-display text-on-surface mb-3">Explore Your Future</h2>
+          <h2 className="font-display text-3xl md:text-display text-on-surface mb-3">Explore Your Future</h2>
           <p className="font-body-lg text-on-surface-variant">
             Browse visual pathways to discover what it takes to reach your goals.
           </p>
@@ -77,17 +77,17 @@ export default function Careers() {
       {pathwayFor && (
         <div
           onClick={(e) => e.target === e.currentTarget && setPathwayFor(null)}
-          className="fixed inset-0 z-[100] bg-on-background/40 backdrop-blur-md flex items-center justify-center p-6"
+          className="fixed inset-0 z-[100] bg-on-background/40 backdrop-blur-md flex items-center justify-center p-4 md:p-6"
         >
-          <div className="bg-surface-bright w-full max-w-5xl rounded-[2.5rem] shadow-2xl border border-outline-variant/20 overflow-hidden relative">
+          <div className="bg-surface-bright w-full max-w-5xl max-h-[90vh] overflow-y-auto custom-scrollbar rounded-3xl md:rounded-[2.5rem] shadow-2xl border border-outline-variant/20 relative">
             <button
               onClick={() => setPathwayFor(null)}
-              className="absolute top-8 right-8 w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant hover:bg-error/10 hover:text-error transition-all z-20"
+              className="absolute top-4 right-4 md:top-8 md:right-8 w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant hover:bg-error/10 hover:text-error transition-all z-20"
             >
               <Icon name="close" />
             </button>
-            <div className="p-12">
-              <div className="flex items-center gap-6 mb-16">
+            <div className="p-6 md:p-12">
+              <div className="flex items-center gap-4 md:gap-6 mb-10 md:mb-16">
                 <div className="text-5xl bg-surface-container-low p-5 rounded-[2rem] shadow-sm">
                   {CAREERS.find((c) => c.key === pathwayFor)?.emoji}
                 </div>
@@ -123,7 +123,7 @@ export default function Careers() {
                   </div>
                 ))}
               </div>
-              <div className="mt-16 bg-surface-container-low/50 p-8 rounded-[2rem] border border-outline-variant/30 flex items-start gap-6">
+              <div className="mt-10 md:mt-16 bg-surface-container-low/50 p-5 md:p-8 rounded-3xl md:rounded-[2rem] border border-outline-variant/30 flex flex-col sm:flex-row items-start gap-4 md:gap-6">
                 <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <Icon name="lightbulb" className="text-primary text-3xl" />
                 </div>

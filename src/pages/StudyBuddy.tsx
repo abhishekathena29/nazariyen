@@ -39,7 +39,7 @@ export default function StudyBuddy() {
   return (
     <div className="flex h-full overflow-hidden">
       {/* Chat */}
-      <section className="flex-1 flex flex-col bg-white p-6 gap-6 relative overflow-hidden">
+      <section className="flex-1 flex flex-col bg-white p-4 md:p-6 gap-4 md:gap-6 relative overflow-hidden">
         <div ref={scrollRef} className="flex-1 overflow-y-auto chat-container pr-2 flex flex-col gap-8">
           {/* Bot welcome */}
           <div className="flex gap-4">

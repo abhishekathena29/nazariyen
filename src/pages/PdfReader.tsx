@@ -16,7 +16,7 @@ export default function PdfReader() {
   return (
     <div className="bg-background text-on-surface flex flex-col h-screen overflow-hidden">
       {/* Top Bar */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-outline-variant/30 z-40 flex justify-between items-center w-full px-margin-page py-3 h-16">
+      <header className="bg-white/80 backdrop-blur-md border-b border-outline-variant/30 z-40 flex justify-between items-center w-full px-4 md:px-margin-page py-3 h-16">
         <div className="flex items-center gap-8">
           <Link to="/" className="font-headline-lg text-2xl font-extrabold tracking-tight text-primary">
             Nazariyen
@@ -33,36 +33,36 @@ export default function PdfReader() {
             </a>
           </nav>
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 md:gap-6">
           <div className="flex items-center gap-1.5 bg-secondary-container/20 px-3 py-1 rounded-full border border-secondary/10">
             <Icon name="bolt" className="text-secondary text-base" filled />
             <span className="font-label-md text-on-secondary-container">1,250 XP</span>
           </div>
-          <button className="text-on-surface-variant hover:text-primary transition-colors">
+          <button className="hidden sm:block text-on-surface-variant hover:text-primary transition-colors">
             <Icon name="language" />
           </button>
-          <img alt="Profile" src={PROFILE_IMG} className="w-8 h-8 rounded-full border border-outline-variant" />
+          <img alt="Profile" src={PROFILE_IMG} className="w-8 h-8 rounded-full border border-outline-variant shrink-0" />
         </div>
       </header>
 
       <main className="flex-1 flex overflow-hidden">
         {/* Reader */}
-        <section className="w-[72%] flex flex-col bg-[#fdfdfe] border-r border-outline-variant/30 relative">
+        <section className="w-full lg:w-[72%] flex flex-col bg-[#fdfdfe] border-r border-outline-variant/30 relative">
           {/* Toolbar */}
-          <div className="h-14 flex items-center justify-between px-8 bg-white/50 border-b border-outline-variant/20 z-10">
-            <div className="flex items-center gap-6">
+          <div className="h-14 flex items-center justify-between gap-3 px-4 md:px-8 bg-white/50 border-b border-outline-variant/20 z-10 overflow-x-auto">
+            <div className="flex items-center gap-3 md:gap-6 shrink-0">
               <button
                 onClick={() => navigate('/library')}
                 className="text-on-surface-variant hover:text-on-surface transition-colors flex items-center"
               >
                 <Icon name="arrow_back" />
               </button>
-              <span className="font-label-md text-on-surface-variant/80 tracking-wide">
+              <span className="font-label-md text-on-surface-variant/80 tracking-wide whitespace-nowrap text-sm md:text-base">
                 Class 10 Science • Chapter 10
               </span>
             </div>
-            <div className="flex items-center gap-12">
-              <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 md:gap-12 shrink-0">
+              <div className="flex items-center gap-3 md:gap-4">
                 <button
                   onClick={() => setZoom((z) => Math.max(50, z - 25))}
                   className="text-on-surface-variant hover:text-on-surface transition-colors"
@@ -77,13 +77,13 @@ export default function PdfReader() {
                   <Icon name="add" />
                 </button>
               </div>
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-3 md:gap-6">
                 <button className="flex items-center gap-2 text-primary hover:bg-primary/5 px-3 py-1.5 rounded-lg transition-all font-label-md">
                   <Icon name="volume_up" className="text-[20px]" />
-                  Read Aloud
+                  <span className="hidden sm:inline">Read Aloud</span>
                 </button>
                 <div className="h-6 w-px bg-outline-variant/40" />
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-4 md:gap-5">
                   <button className="text-on-surface-variant hover:text-on-surface transition-colors">
                     <Icon name="bookmark" />
                   </button>
@@ -99,15 +99,15 @@ export default function PdfReader() {
           </div>
 
           {/* Page */}
-          <div className="flex-1 overflow-y-auto p-16 custom-scrollbar flex justify-center bg-surface-container-lowest">
+          <div className="flex-1 overflow-y-auto p-4 md:p-16 custom-scrollbar flex justify-center bg-surface-container-lowest">
             <div
-              className="w-full max-w-3xl bg-white shadow-sm border border-outline-variant/20 rounded-sm p-20 min-h-[1200px] relative"
+              className="w-full max-w-3xl bg-white shadow-sm border border-outline-variant/20 rounded-sm p-6 md:p-20 min-h-[1200px] relative"
               style={{ fontSize: `${zoom}%`, lineHeight: 1.6 }}
             >
-              <div className="flex justify-between items-baseline mb-16 border-b border-outline-variant/10 pb-4">
+              <div className="flex justify-between items-baseline gap-4 mb-10 md:mb-16 border-b border-outline-variant/10 pb-4">
                 <div>
                   <p className="text-primary font-label-md tracking-widest uppercase text-xs mb-1">Chapter 10</p>
-                  <h1 className="font-headline-lg text-3xl text-on-surface">Light – Reflection and Refraction</h1>
+                  <h1 className="font-headline-lg text-2xl md:text-3xl text-on-surface">Light – Reflection and Refraction</h1>
                 </div>
                 <span className="text-outline text-sm">Page 161</span>
               </div>
@@ -149,7 +149,7 @@ export default function PdfReader() {
         </section>
 
         {/* AI Side */}
-        <aside className="w-[28%] bg-white flex flex-col h-full border-l border-outline-variant/20 z-20">
+        <aside className="hidden lg:flex w-[28%] bg-white flex-col h-full border-l border-outline-variant/20 z-20">
           <div className="p-6 pb-2">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-10 h-10 bg-primary/5 text-primary rounded-xl flex items-center justify-center border border-primary/10">

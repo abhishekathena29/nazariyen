@@ -18,8 +18,8 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 md:p-8 overflow-x-hidden bg-surface">
-      <main className="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 bg-surface-container-lowest rounded-3xl overflow-hidden shadow-[0_4px_20px_rgba(37,99,235,0.08)] min-h-[700px]">
+    <div className="min-h-screen overflow-x-hidden bg-surface">
+      <main className="w-full min-h-screen grid grid-cols-1 md:grid-cols-2 bg-surface-container-lowest overflow-hidden">
         {/* Illustration */}
         <div className="hidden md:flex flex-col justify-center items-center p-12 bg-primary-container relative overflow-hidden">
           <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-secondary-container opacity-20 rounded-full blur-3xl" />
