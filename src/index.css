@@ -1,0 +1,16 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #f8f9ff;
+  color: #0b1c30;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; background: none; border: 0; padding: 0; }
+* { box-sizing: border-box; }

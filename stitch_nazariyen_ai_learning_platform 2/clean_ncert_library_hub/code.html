@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nazariyen | NCERT Library Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary-fixed-variant": "#38485d",
+                "on-tertiary": "#ffffff",
+                "background": "#f7f9fb",
+                "primary-container": "#2563eb",
+                "on-secondary-fixed": "#0b1c30",
+                "surface-container": "#eceef0",
+                "error-container": "#ffdad6",
+                "inverse-surface": "#2d3133",
+                "on-tertiary-fixed": "#360f00",
+                "surface-container-lowest": "#ffffff",
+                "inverse-on-surface": "#eff1f3",
+                "secondary": "#505f76",
+                "error": "#ba1a1a",
+                "surface-dim": "#d8dadc",
+                "tertiary": "#943700",
+                "secondary-fixed": "#d3e4fe",
+                "on-surface-variant": "#434655",
+                "outline": "#737686",
+                "tertiary-fixed": "#ffdbcd",
+                "on-secondary-container": "#54647a",
+                "on-background": "#191c1e",
+                "secondary-fixed-dim": "#b7c8e1",
+                "on-error": "#ffffff",
+                "on-primary-container": "#eeefff",
+                "inverse-primary": "#b4c5ff",
+                "on-secondary": "#ffffff",
+                "primary": "#004ac6",
+                "secondary-container": "#d0e1fb",
+                "surface-tint": "#0053db",
+                "surface-variant": "#e0e3e5",
+                "on-error-container": "#93000a",
+                "surface-bright": "#f7f9fb",
+                "outline-variant": "#c3c6d7",
+                "on-surface": "#191c1e",
+                "surface-container-high": "#e6e8ea",
+                "on-primary": "#ffffff",
+                "primary-fixed-dim": "#b4c5ff",
+                "on-primary-fixed-variant": "#003ea8",
+                "surface-container-low": "#f2f4f6",
+                "surface": "#f7f9fb",
+                "on-tertiary-container": "#ffede6",
+                "on-tertiary-fixed-variant": "#7d2d00",
+                "tertiary-container": "#bc4800",
+                "tertiary-fixed-dim": "#ffb596",
+                "surface-container-highest": "#e0e3e5",
+                "on-primary-fixed": "#00174b",
+                "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "margin-page": "2.5rem",
+                "container-max": "1280px",
+                "gutter": "1.5rem",
+                "section-gap": "4rem"
+            },
+            "fontFamily": {
+                "headline-lg": ["Plus Jakarta Sans"],
+                "body-md": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"],
+                "headline-lg-mobile": ["Plus Jakarta Sans"],
+                "label-md": ["Plus Jakarta Sans"],
+                "metadata": ["Plus Jakarta Sans"],
+                "headline-md": ["Plus Jakarta Sans"],
+                "display": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                "metadata": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "display": ["44px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d3e4fe; border-radius: 10px; }
+        .pill-select-active {
+            border-color: #004ac6;
+            background-color: #004ac6;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface flex min-h-screen overflow-hidden">
+<!-- SideNavBar (Left) -->
+<aside class="docked left-0 h-screen w-72 bg-white border-r border-outline-variant/30 flex flex-col p-6 gap-6 z-50">
+<div class="mb-4">
+<h1 class="text-2xl font-display text-primary">Nazariyen</h1>
+<div class="flex items-center gap-3 mt-8 p-3 bg-surface-container-low rounded-2xl border border-outline-variant/10">
+<img alt="AI Buddy" class="w-10 h-10 rounded-full bg-primary-container/20 p-0.5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB3O2mP-GdmaOA99-7eKmFD1NxBoZxDGRxLA3zFnOGaA5ywnLG2r6Dh7pyYwqSB1HXV07jdCihh3QoyZvryj-xo7B0sFcAcip9tjmzz8aSVqyIFV9Qx1Y2kWdto8kLfxP7hMIDScWLg-r1p7oxvlW2EAgL8Dfu2RoUUOKM_u8OT7GQQsTckObZvPlOE6DNKF-W3JJj5kBprvxSThUdzX9OlhrfjNN4lk9lp9t1q0DR0cF3eKtwtkY-AQAOtPqeV0_l5RGM70laeRrA"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Super Learner</p>
+<p class="text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Class 10 • Rank #12</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low rounded-xl transition-all group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-md text-label-md">Study Buddy</span>
+</a>
+<a class="flex items-center gap-3 bg-primary/5 text-primary rounded-xl px-4 py-3" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="library_books" style="font-variation-settings: 'FILL' 1;">library_books</span>
+<span class="font-label-md text-label-md font-bold">Library</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low rounded-xl transition-all group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary" data-icon="route">route</span>
+<span class="font-label-md text-label-md">Careers</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low rounded-xl transition-all group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-label-md text-label-md">Quests</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-low rounded-xl transition-all group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary" data-icon="account_circle">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<button class="w-full py-3.5 px-4 bg-primary text-white rounded-xl font-bold flex items-center justify-center gap-2 mb-2 hover:opacity-90 transition-opacity shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="auto_awesome">auto_awesome</span>
+<span>Ask AI Buddy</span>
+</button>
+<div class="pt-4 border-t border-outline-variant/30 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-low rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="settings">settings</span>
+<span class="text-xs font-semibold">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-page py-5 bg-white border-b border-outline-variant/30 z-40">
+<div class="flex items-center gap-4 flex-1 max-w-2xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2.5 pl-12 pr-4 text-sm focus:ring-1 focus:ring-primary" placeholder="Search textbooks, topics, or subjects..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-8 pl-8">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-lg" data-icon="bolt">bolt</span>
+<span class="font-bold text-sm">1,250 XP</span>
+</div>
+<div class="flex items-center gap-5 text-on-surface-variant">
+<button class="p-1.5 hover:bg-surface-container-low rounded-full transition-all"><span class="material-symbols-outlined text-xl" data-icon="language">language</span></button>
+<button class="p-1.5 hover:bg-surface-container-low rounded-full transition-all"><span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span></button>
+<img alt="Profile" class="w-8 h-8 rounded-full border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt8WaDtPU3H54dGUnIfc_FJDmZX9HvtujA84BD3GBZzsPWEdZtiC-Wg5_PY6wADlipxGHmEHa0Jys0tLLbOgr2gS_xHYxtKGCD-mCZBbH6LtB_zwyYoBe-ajwluzzuWk-kwtH6lmQYhVom3FW8U0v_5absusJPwAVoLOjD0sTphgcaaWGs8TD012Rn_1GHFRt0-ffwJ8Gz6VYzxyj1Rx3DaO7S0Dsr1Zm6FvDZt-K0_mLi8T1eaMyNfkJKCa7zuRPzTIymKZi_ZEEx"/>
+</div>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden">
+<!-- Scrollable Content -->
+<section class="flex-1 overflow-y-auto px-margin-page py-10 scroll-smooth">
+<!-- Simplified Hero -->
+<div class="relative rounded-3xl overflow-hidden mb-12 bg-gradient-to-br from-primary to-primary-container p-12 min-h-[240px] flex items-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img alt="Subtle library background" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdtifzbKRwaD2fn4EP_sxuewq9yR1AaKfGt4Byn2RqjPZjjdZivaw9fcvdumTtVMpByAStQUWxm1XrHJpAmhFlF6Fev5DbpihoMrNyNKtICm3PQsIe5O_xEEy7uh_t1SbH42-gOcL2L5U7Q2xwWot_nTsSWNDZSOGffcBJCIM19d-MhJA4ICz67hagnxW6r7kgzUPNUz2CH7vY1Fk0NM7E3dprEXBDjjHGHGF7WAtcfCfTYWCcL2IStlN5jbUC8Nh0c43fzGRuFUE7"/>
+</div>
+<div class="relative z-10 max-w-xl">
+<h2 class="text-4xl font-display text-white mb-4">Your Digital Library</h2>
+<p class="text-white/80 text-lg font-body-md leading-relaxed">Access the complete NCERT collection anytime. Refined for your success.</p>
+<div class="mt-8 flex gap-4">
+<span class="flex items-center gap-2 text-white bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold border border-white/20">
+<span class="material-symbols-outlined text-lg" data-icon="book_5">book_5</span> 300+ Books
+                            </span>
+<span class="flex items-center gap-2 text-white bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold border border-white/20">
+<span class="material-symbols-outlined text-lg" data-icon="translate">translate</span> 15 Languages
+                            </span>
+</div>
+</div>
+</div>
+<!-- Refined Selectors -->
+<div class="mb-12 space-y-8">
+<div>
+<h3 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-4">Class Selector</h3>
+<div class="flex gap-2 overflow-x-auto pb-2">
+<button class="pill-select-active px-6 py-2.5 rounded-full text-sm font-bold border border-primary transition-all">Class 10</button>
+<script>
+                                const classes = ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6', 'Class 7', 'Class 8', 'Class 9', 'Class 11', 'Class 12'];
+                                classes.forEach(c => {
+                                    document.write(`<button class="px-6 py-2.5 bg-white text-on-surface-variant border border-outline-variant/40 rounded-full text-sm font-medium hover:border-primary/40 hover:text-primary transition-all flex-shrink-0">${c}</button>`);
+                                });
+                            </script>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-4">Preferred Language</h3>
+<div class="flex gap-2">
+<button class="pill-select-active px-6 py-2.5 rounded-full text-sm font-bold border border-primary transition-all">English</button>
+<button class="px-6 py-2.5 bg-white text-on-surface-variant border border-outline-variant/40 rounded-full text-sm font-medium hover:border-primary/40 hover:text-primary transition-all">Hindi</button>
+<button class="px-6 py-2.5 bg-white text-on-surface-variant border border-outline-variant/40 rounded-full text-sm font-medium hover:border-primary/40 hover:text-primary transition-all">Urdu</button>
+</div>
+</div>
+</div>
+<!-- Books Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Science Card -->
+<div class="group bg-white border border-outline-variant/30 rounded-2xl p-6 hover:border-primary transition-all">
+<div class="relative aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-container">
+<img alt="Science Book" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAASoHJMijOqMwct2Cfv2ZyCSb4sNpIvSHaVibiAaKBHpbFZtw1LEoJnBjJ2G8EIyXdsKe2IrSbPoR21b7e3jNYwrPA3HwRAdo8gTrGb05L9S8MC7qnfrQ-nGvZ8oxrekYcqxr_vYfjWKkkskIJhB-YaeX-__bxbj6vOS6QwhhP4xQzoxCwlU3yzUjcFsHL26RwNUViIZW2YDiDbpZNFew1gw87_8RAJwhR1xIRkiGPAxlZ3YYfXDDA1dpCLAjf1RdTpuHP5b9kVI_h"/>
+<div class="absolute inset-0 bg-on-surface/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-primary p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase tracking-wider">Science</span>
+<span class="text-[10px] text-on-surface-variant font-medium">15 Chapters</span>
+</div>
+<h4 class="text-xl font-headline-md text-on-surface mb-6">Class 10 Science</h4>
+<button class="w-full py-3 bg-white border border-outline-variant hover:border-primary hover:text-primary text-on-surface font-bold rounded-xl text-sm transition-all">Open Textbook</button>
+</div>
+<!-- Math Card -->
+<div class="group bg-white border border-outline-variant/30 rounded-2xl p-6 hover:border-secondary transition-all">
+<div class="relative aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-container">
+<img alt="Math Book" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0mNkEjbiOi0KE3CnHGzoEltks_8_W-Jls67QAUzKnHrIXIEmv8PH8I7y--BCZuZVwEpUDYkUmTe8bn0efHFe4u3A_sS0Ya5fWw3PoPV_rYTt4VNpy5LDaA01V_ZC6dsZGQdahLfe4n19z8rqocByLPPCABzBO0qsH-PwqB713CY7Xf6ws1Yn5jAmgiYeU0T5eaVndSABjePVxu97O9m71Dx8WMCzi_HyKNdn4qzL3tUL86GJ_yfxhvreJjISZArX1fgJZQJ799BqO"/>
+<div class="absolute inset-0 bg-on-surface/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-secondary p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="text-[10px] font-bold text-secondary bg-secondary/10 px-2 py-0.5 rounded uppercase tracking-wider">Mathematics</span>
+<span class="text-[10px] text-on-surface-variant font-medium">14 Chapters</span>
+</div>
+<h4 class="text-xl font-headline-md text-on-surface mb-6">Class 10 Mathematics</h4>
+<button class="w-full py-3 bg-white border border-outline-variant hover:border-secondary hover:text-secondary text-on-surface font-bold rounded-xl text-sm transition-all">Open Textbook</button>
+</div>
+<!-- History Card -->
+<div class="group bg-white border border-outline-variant/30 rounded-2xl p-6 hover:border-tertiary transition-all">
+<div class="relative aspect-[3/4] rounded-xl overflow-hidden mb-6 bg-surface-container">
+<img alt="History Book" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC409LUuPKNSLsIAPk29vPgZBnDUQhSTcm1pesOLJDvkcqyuUtzfrbLHKSuz24GC9AUpEVxxCQ2d36Mwjp82jT4LVczCKAxnu2AQrBTm6yylhZ8tycy4LobeMMskdKWDwL5sr2gM3kXFcQpsftHNcS10vQuCedNFEEyp8O9VNbbrKm29PTHUo49rnSJGtA2zPSocPuJHBFOkVHq_6PHi2LB1LqfKInNQb3oaNaXdCPGb8rDYN7MiBsGUnHw3IF1HfgY9eq80JDbgPVF"/>
+<div class="absolute inset-0 bg-on-surface/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-tertiary p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="text-[10px] font-bold text-tertiary bg-tertiary/10 px-2 py-0.5 rounded uppercase tracking-wider">History</span>
+<span class="text-[10px] text-on-surface-variant font-medium">8 Chapters</span>
+</div>
+<h4 class="text-xl font-headline-md text-on-surface mb-6">India &amp; World</h4>
+<button class="w-full py-3 bg-white border border-outline-variant hover:border-tertiary hover:text-tertiary text-on-surface font-bold rounded-xl text-sm transition-all">Open Textbook</button>
+</div>
+</div>
+</section>
+<!-- Refined Right Sidebar -->
+<aside class="w-80 bg-white border-l border-outline-variant/30 p-8 flex flex-col gap-10 hidden xl:flex">
+<!-- Recently Read -->
+<div>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-sm font-bold text-on-surface uppercase tracking-wider">Recently Read</h3>
+<a class="text-xs font-bold text-primary hover:underline" href="#">All</a>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-12 h-16 bg-surface-container rounded-lg overflow-hidden flex-shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgtoKyFse1ECX8HosFcE4bfv6POyoz9LW_GgacqpHrBmw2g-Ws1QoQSV45Sl_D0LAr5Lshb1v11nn6_Rt46ouhwkKZH_JAr_2TaLhRnQHRgaGU_eaY6xTSRXnaA2Xzm0EsHZ73f8HoA_fS1pV3Aoqmux_NZ-_j9FZ-FuhRo_YykmlmUHpDvTLOtJ6vcCJN8YXqafjTpkOR561796neg5F-Y_1q030KyDVHDF5SuU8kC1O-C6FYhtwjvQR4RMvAEcMI4cNwreQDrQGM"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">Science Class 10</p>
+<p class="text-xs text-on-surface-variant mb-2">Ch 4: Carbon...</p>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-primary"></div>
+</div>
+</div>
+</div>
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-12 h-16 bg-surface-container rounded-lg overflow-hidden flex-shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdqkQXO8mfueoLeJnHZGn-jBoaZB2MFwcsHsJBFPf3zTXMzAWSd9v0cQ7bw-7Grtl-oR_uJk11UOEUsjUu4EmkcQdaRHNylRh3hY5pr3XcyQFcylFi-T1MHs3rr3HvuB1w4IX3o-7IMwcNPtExmOtFpeBoxJI0GkV2PEkJMtbPQqD9QAIvX0ZE76ldloM5nUPuhNaJbxD_BdBF5MWJ--x6DyJmPXe5CkUA_VzLf99R-GU74cwhGXqyrfTwWg2dfq4X9_KluedgrSp4"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold truncate">Math Class 10</p>
+<p class="text-xs text-on-surface-variant mb-2">Ch 8: Trigonom...</p>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden">
+<div class="w-1/4 h-full bg-secondary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bookmarks -->
+<div>
+<h3 class="text-sm font-bold text-on-surface uppercase tracking-wider mb-6">Bookmarks</h3>
+<div class="space-y-2">
+<div class="p-4 rounded-xl border border-outline-variant/20 hover:border-primary/30 transition-all cursor-pointer bg-surface-container-low/30">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-base" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Science • P. 142</span>
+</div>
+<p class="text-xs text-on-surface font-medium leading-relaxed line-clamp-2">"The periodic table is arranged in order of increasing atomic..."</p>
+</div>
+<div class="p-4 rounded-xl border border-outline-variant/20 hover:border-tertiary/30 transition-all cursor-pointer bg-surface-container-low/30">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary text-base" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">History • P. 24</span>
+</div>
+<p class="text-xs text-on-surface font-medium leading-relaxed line-clamp-2">"The rise of nationalism in Europe during the nineteenth..."</p>
+</div>
+</div>
+</div>
+<!-- Tip Card -->
+<div class="mt-auto p-6 bg-primary-container/10 border border-primary/20 rounded-2xl">
+<div class="flex items-center gap-2 mb-3 text-primary">
+<span class="material-symbols-outlined text-xl" data-icon="lightbulb">lightbulb</span>
+<span class="text-xs font-bold uppercase tracking-wider">Pro Tip</span>
+</div>
+<p class="text-xs leading-relaxed text-on-surface-variant font-medium">Keep your streak alive! Revise 'Carbon Compounds' today to master Chapter 4.</p>
+</div>
+</aside>
+</div>
+</main>
+<script>
+        // Language Switcher Hover/Click Effect
+        const langBtn = document.querySelector('[data-icon="language"]');
+        langBtn.parentElement.onclick = () => {
+            alert('Language selection updated.');
+        };
+    </script>
+</body></html>

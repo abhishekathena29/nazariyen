@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | Nazariyen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f8f9ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary-container": "#6cf8bb",
+                        "on-surface": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-container": "#00714d",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#004ac6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-primary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#b4c5ff",
+                        "primary-container": "#2563eb",
+                        "outline-variant": "#c3c6d7",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-container": "#ffeedd",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-container": "#996100",
+                        "surface-container-high": "#dce9ff",
+                        "error": "#ba1a1a",
+                        "outline": "#737686",
+                        "on-secondary-fixed": "#002113",
+                        "secondary": "#006c49",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary": "#784b00",
+                        "surface-variant": "#d3e4fe",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "secondary-fixed": "#6ffbbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "container-max": "1200px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8f9ff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .login-card-shadow {
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+        }
+        .button-3d {
+            transition: all 0.2s ease;
+            border-bottom-width: 3px;
+        }
+        .button-3d:active {
+            transform: translateY(2px);
+            border-bottom-width: 1px;
+        }
+        .glass-effect {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-8 overflow-x-hidden">
+<!-- Auth Shell Logic: Since this is a login screen, we suppress global TopAppBar/SideNavBar as per instructions -->
+<main class="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 bg-surface-container-lowest rounded-3xl overflow-hidden login-card-shadow min-h-[700px]">
+<!-- Illustration Side (Visible on MD+) -->
+<div class="hidden md:flex flex-col justify-center items-center p-12 bg-primary-container relative overflow-hidden">
+<!-- Decorative shapes -->
+<div class="absolute top-[-10%] right-[-10%] w-64 h-64 bg-secondary-container opacity-20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-80 h-80 bg-tertiary-fixed-dim opacity-10 rounded-full blur-3xl"></div>
+<div class="relative z-10 text-center space-y-8">
+<div class="bg-surface-container-lowest/20 backdrop-blur-md p-8 rounded-[2rem] border border-white/20">
+<img alt="Nazariyen Learning" class="w-full h-auto rounded-2xl shadow-2xl" data-alt="A vibrant, modern educational illustration for a K-12 learning app. In the center, a friendly, stylized robot character with expressive eyes is helping a diverse group of curious young students explore a holographic solar system floating in a bright, airy classroom. The aesthetic is playful yet clean, using a palette of Nazariyen blue and supportive greens with soft ambient lighting and 3D tactile elements. High-saturation accents of gold represent achievement and progress." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOm5GEDhhVvN5X0nbDXKz-ReoGnFDAzzJwn_a3GKDZIn0Pma9N4C0nzXaZJUPvXxylcsDQoLSHq-BcqsM_nypb3uaT8S-fqGZb_9-ztsmUzqkKYLdZgOJwN5KAqteJJWAXr4hrCSzqQ9gRGTjem69oWrvgQsD0u4ZCAUhShHrkxSfp-49onHZoSWpeJHz14zBJfW-lx-_hT4FRL1i_lCoL6dmPlNer3Rw9O3_obD33z6WAW0Em0mRhLUClWh7UZ68NQ40caTfvWvQW"/>
+</div>
+<div class="space-y-4">
+<h1 class="font-headline-lg text-headline-lg text-on-primary-container">Learn Smarter, Not Harder</h1>
+<p class="font-body-lg text-body-lg text-on-primary-container/80 max-w-md mx-auto">
+                        Your AI Buddy is waiting to help you ace your Class 10 journey. Join thousands of super learners today!
+                    </p>
+</div>
+<!-- Floating Feedback Toast (Visual Sample) -->
+<div class="absolute top-20 right-10 animate-bounce">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-4 py-2 rounded-full shadow-lg flex items-center gap-2 border-b-2 border-tertiary-container">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-md text-label-md">1,250 XP Today!</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Form Side -->
+<div class="flex flex-col justify-center p-8 md:p-16 space-y-10">
+<!-- Brand Logo -->
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl">smart_toy</span>
+</div>
+<span class="font-headline-lg text-headline-lg font-black tracking-tight text-primary">Nazariyen</span>
+</div>
+<div class="space-y-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Welcome Back!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Log in to continue your learning quest.</p>
+</div>
+<!-- Login Form -->
+<form action="#" class="space-y-6" onsubmit="event.preventDefault();">
+<div class="space-y-4">
+<!-- Email/Phone Input -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-1" for="identifier">Email or Phone Number</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-surface-container-lowest rounded-2xl outline-none transition-all font-body-md text-body-md text-on-surface" id="identifier" placeholder="Enter your email or phone" type="text"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="font-label-md text-label-md text-on-surface-variant" for="password">Password</label>
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">Forgot Password?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full pl-12 pr-12 py-4 bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-surface-container-lowest rounded-2xl outline-none transition-all font-body-md text-body-md text-on-surface" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full py-4 bg-primary text-white rounded-2xl font-label-md text-label-md button-3d border-b-primary-container shadow-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2">
+                    Log In
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="relative flex items-center gap-4">
+<div class="flex-grow h-[1px] bg-outline-variant"></div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">or continue with</span>
+<div class="flex-grow h-[1px] bg-outline-variant"></div>
+</div>
+<!-- Secondary Login Options -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 px-6 rounded-2xl bg-surface-container-lowest border-2 border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all duration-300 group">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5-yyonhrZ0GldwRXEbgfdcMh3fHR5kC2hXC8KezXZ2GoT2XI-kaBgjNeGqUqwwcNg8Uph0dLpJ3jgJzlhwYT-IHg4uK3v2qwV19VOs5cP7IUeEqSN0qF0IGGJxqPjICNBez4e1MLJE_PPStSyWAC0vWx8gZGUTzKXr4DsNNZCk63mHkB2ZcLI1oRf0OcX3kUufjnIeKeG4wjqIu0qVOKvVyKQP5Gs_BkltHJEkPnsjY06mNhEDvG6LTxXrP9znQcaFFYUrPgWZl8E"/>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-primary">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3 px-6 rounded-2xl bg-surface-container-lowest border-2 border-outline-variant hover:border-secondary hover:bg-surface-container-low transition-all duration-300 group">
+<span class="material-symbols-outlined text-outline group-hover:text-secondary">smartphone</span>
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-secondary">Phone OTP</span>
+</button>
+</div>
+<!-- Footer Link -->
+<p class="text-center font-body-md text-body-md text-on-surface-variant">
+                New to Nazariyen? 
+                <a class="text-primary font-bold hover:underline" href="#">Create an Account</a>
+</p>
+</div>
+</main>
+<!-- Floating Help Button -->
+<div class="fixed bottom-8 right-8">
+<button class="w-14 h-14 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all button-3d border-b-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+<script>
+        // Simple Interaction: Password Toggle
+        const passwordToggle = document.querySelector('button[type="button"] span');
+        const passwordInput = document.getElementById('password');
+        
+        if(passwordToggle && passwordInput) {
+            passwordToggle.parentElement.addEventListener('click', () => {
+                const isPassword = passwordInput.type === 'password';
+                passwordInput.type = isPassword ? 'text' : 'password';
+                passwordToggle.innerText = isPassword ? 'visibility_off' : 'visibility';
+            });
+        }
+
+        // Add a soft entrance animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const main = document.querySelector('main');
+            main.style.opacity = '0';
+            main.style.transform = 'translateY(20px)';
+            main.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            
+            setTimeout(() => {
+                main.style.opacity = '1';
+                main.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body></html>

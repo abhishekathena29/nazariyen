@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nazariyen - AI Study Buddy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-secondary-fixed-variant": "#38485d",
+                "on-tertiary": "#ffffff",
+                "background": "#ffffff",
+                "primary-container": "#f1f5f9",
+                "on-secondary-fixed": "#0b1c30",
+                "surface-container": "#f8fafc",
+                "error-container": "#ffdad6",
+                "inverse-surface": "#2d3133",
+                "on-tertiary-fixed": "#360f00",
+                "surface-container-lowest": "#ffffff",
+                "inverse-on-surface": "#eff1f3",
+                "secondary": "#64748b",
+                "error": "#ba1a1a",
+                "surface-dim": "#f1f5f9",
+                "tertiary": "#943700",
+                "secondary-fixed": "#e2e8f0",
+                "on-surface-variant": "#64748b",
+                "outline": "#e2e8f0",
+                "tertiary-fixed": "#ffdbcd",
+                "on-secondary-container": "#475569",
+                "on-background": "#0f172a",
+                "secondary-fixed-dim": "#cbd5e1",
+                "on-error": "#ffffff",
+                "on-primary-container": "#0f172a",
+                "inverse-primary": "#b4c5ff",
+                "on-secondary": "#ffffff",
+                "primary": "#2563eb",
+                "secondary-container": "#f1f5f9",
+                "surface-tint": "#2563eb",
+                "surface-variant": "#f1f5f9",
+                "on-error-container": "#93000a",
+                "surface-bright": "#ffffff",
+                "outline-variant": "#f1f5f9",
+                "on-surface": "#0f172a",
+                "surface-container-high": "#f8fafc",
+                "on-primary": "#ffffff",
+                "primary-fixed-dim": "#b4c5ff",
+                "on-primary-fixed-variant": "#003ea8",
+                "surface-container-low": "#ffffff",
+                "surface": "#ffffff",
+                "on-tertiary-container": "#ffede6",
+                "on-tertiary-fixed-variant": "#7d2d00",
+                "tertiary-container": "#bc4800",
+                "tertiary-fixed-dim": "#ffb596",
+                "surface-container-highest": "#f1f5f9",
+                "on-primary-fixed": "#00174b",
+                "primary-fixed": "#dbe1ff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "2xl": "1rem",
+                "3xl": "1.5rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "margin-page": "2.5rem",
+                "container-max": "1280px",
+                "gutter": "1.5rem",
+                "section-gap": "4rem"
+        },
+        "fontFamily": {
+                "headline-lg": ["Plus Jakarta Sans"],
+                "body-md": ["Plus Jakarta Sans"],
+                "body-lg": ["Plus Jakarta Sans"],
+                "headline-lg-mobile": ["Plus Jakarta Sans"],
+                "label-md": ["Plus Jakarta Sans"],
+                "metadata": ["Plus Jakarta Sans"],
+                "headline-md": ["Plus Jakarta Sans"],
+                "display": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                "metadata": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "display": ["44px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+        }
+    },
+    },
+  }
+</script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20; }
+        .chat-container::-webkit-scrollbar { width: 4px; }
+        .chat-container::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .chat-bubble-user { border-bottom-right-radius: 4px; }
+        .chat-bubble-ai { border-bottom-left-radius: 4px; }
+    </style>
+</head>
+<body class="overflow-hidden bg-background text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-outline flex flex-col p-6 gap-8 z-50 hidden md:flex">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined !text-lg" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<h1 class="font-headline-md text-xl font-bold tracking-tight text-on-surface">Nazariyen</h1>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 bg-primary/5 text-primary rounded-lg px-4 py-2.5 transition-colors" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-md text-sm font-semibold">Study Buddy</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2.5 hover:bg-surface-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-label-md text-sm">Library</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2.5 hover:bg-surface-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="font-label-md text-sm">Careers</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2.5 hover:bg-surface-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="font-label-md text-sm">Quests</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2.5 hover:bg-surface-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-sm">Profile</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-outline flex flex-col gap-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2.5 hover:bg-surface-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2.5 hover:bg-surface-container rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-sm">Help</span>
+</a>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<main class="md:ml-64 flex flex-col h-screen">
+<!-- Top App Bar -->
+<header class="h-16 bg-white border-b border-outline flex items-center justify-between px-6 md:px-8 sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<button class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant !text-lg">language</span>
+<span class="font-label-md text-sm text-on-surface">English</span>
+<span class="material-symbols-outlined text-on-surface-variant !text-sm">expand_more</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-tertiary-fixed/30 text-tertiary">
+<span class="material-symbols-outlined !text-lg" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-label-md text-sm font-bold">12 Days</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 text-primary">
+<span class="material-symbols-outlined !text-lg" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-md text-sm font-bold">1,250 XP</span>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline">
+<img alt="Student Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwrEpoaKqW4hjHXz_EuexVVDui9Sle5HNidVhCx-PRitiPDCoE7qydgNBJD_XJCIw7qwSnKrHc8ZYHDQYHm0AOdlpUFrjPahHCQnqDnZZ5AN26ydu07qf2y0prP1ApdXhtxBKjR5SKhnpZfdzHuVJiFYK1Dad97OD6Tg_q135xLgeENNa7n2Gh9CjuUBy90T8zJkeEovRDD2BZpsoRYbXDY85TPhF2xEGUNeNH7Zi-MA2B5Z1hnp2FskcHMQoSId_jWv87Zzrg2zxc"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Chat Interface -->
+<section class="flex-1 flex flex-col bg-white p-6 gap-6 relative">
+<div class="flex-1 overflow-y-auto chat-container pr-2 flex flex-col gap-8">
+<!-- Bot Welcome -->
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center shrink-0 border border-outline">
+<img alt="AI Mascot" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7hBSQ-PQ0Iw3jZjsIfE9nPfU6HM427bAmUMJ-iZXcZpsiXaKPC4UCGNmHQD6EdkMeQvObEpyd-np0Hrp6PcsrgoMrsbh9fHJ5QgFnyaymh17JTfoprCB__QByEgIGz2HqAyw5ng1SxU7CldNMQoIWuvz09r899tZyfLJN8flmXDIDUW0GtH_NfWKI3WHRXUGppdPXTQDFMXP1F635Lr_PluWYvbZoYdVwFiGwzNO7QfdnH6HSW-s0sGu2M9ijOyHFvX6Wb3dCNKHh"/>
+</div>
+<div class="max-w-[85%] flex flex-col gap-4">
+<div class="bg-surface-container-low p-5 rounded-2xl chat-bubble-ai border border-outline/50">
+<h2 class="font-headline-md text-lg text-primary mb-2">Hi Rahul! What are we learning today?</h2>
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">I'm ready to dive into any subject with you. We can explore concepts, tackle homework, or prepare for exams together!</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 bg-white hover:bg-surface-container border border-outline rounded-full font-label-md text-xs text-on-surface-variant transition-colors">
+Explain Class 10 Light Reflection like I'm in Class 5
+</button>
+<button class="px-4 py-2 bg-white hover:bg-surface-container border border-outline rounded-full font-label-md text-xs text-on-surface-variant transition-colors">
+Quiz me on Carbon Compounds
+</button>
+</div>
+</div>
+</div>
+<!-- Bot Response Example -->
+<div class="flex gap-4">
+<div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center shrink-0 border border-outline">
+<img alt="AI Mascot" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1lOPpKwZSQInGtgals6IC6faUMqEYbYB3qs_SgBrXuxV84JEUHk3jD4c-EADEFxxZqi5DB3GccnqRm8_itC_S1wozsX0IQoA1NiKlXBC3uWMTOb_DAZjMnm-99laoFcS1iK21yw98je1P1NWVOBFN99FlB6cJUzkT5CZClqSlQnygGaIH9OpOBPGQqWDiYsxZOeAxCoP99Me5kPRbJYAPPV2fsrYkOTPZrHchz1yxEweEg9Spyzbh5Ck22um7b0N-bL_-0oC80JJT"/>
+</div>
+<div class="max-w-[85%] flex flex-col gap-4">
+<div class="bg-surface-container-low p-5 rounded-2xl chat-bubble-ai border border-outline/50">
+<p class="font-body-md text-sm text-on-surface-variant leading-relaxed">Sure thing! Let's talk about **Light Reflection**. Imagine a ball hitting a wall and bouncing back. Light does the same thing when it hits a mirror!</p>
+<div class="mt-4 p-4 bg-white rounded-xl border border-outline">
+<p class="font-body-md text-xs font-bold text-primary mb-1 uppercase tracking-wider">Key Idea</p>
+<p class="font-body-md text-sm italic text-on-surface">"The angle at which light hits is the same as the angle at which it bounces off."</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 border border-outline rounded-lg text-xs text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined !text-base">psychology</span>
+Explain differently
+</button>
+<button class="flex items-center gap-2 px-3 py-1.5 border border-outline rounded-lg text-xs text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined !text-base">quiz</span>
+Quiz me
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="mt-auto border border-outline rounded-2xl bg-white p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between border-b border-outline pb-3">
+<div class="relative">
+<button class="flex items-center gap-2 px-3 py-1 rounded-lg border border-outline bg-surface-container-low text-xs font-semibold text-on-surface hover:bg-surface-container transition-colors">
+Level: Class 10
+<span class="material-symbols-outlined !text-sm">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="flex gap-1">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined !text-xl">attach_file</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors">
+<span class="material-symbols-outlined !text-xl">image</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-1">
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-sm placeholder:text-on-surface-variant/50" placeholder="Ask Study Buddy anything..." type="text"/>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined !text-xl">mic</span>
+</button>
+<button class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center hover:bg-blue-700 transition-colors">
+<span class="material-symbols-outlined !text-xl" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Right Sidebar Widgets -->
+<aside class="w-80 bg-white border-l border-outline p-6 flex flex-col gap-8 hidden xl:flex">
+<!-- Daily Goals -->
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-sm font-bold uppercase tracking-widest text-on-surface-variant">Daily Goals</h3>
+<span class="material-symbols-outlined text-on-surface-variant !text-lg">target</span>
+</div>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-xs font-medium text-on-surface">Complete 1 Chapter</span>
+<span class="text-xs font-bold text-primary">60%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 60%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-xs font-medium text-on-surface">Solve 5 Math Problems</span>
+<span class="text-xs font-bold text-secondary">100%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 text-xs font-bold text-on-surface border border-outline rounded-xl hover:bg-surface-container transition-colors">
+View All Tasks
+</button>
+</div>
+<!-- Mini Leaderboard -->
+<div class="flex-1 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-sm font-bold uppercase tracking-widest text-on-surface-variant">Top Friends</h3>
+<span class="material-symbols-outlined text-on-surface-variant !text-lg">emoji_events</span>
+</div>
+<div class="space-y-4 overflow-y-auto flex-1">
+<div class="flex items-center gap-3 p-3 rounded-xl border border-primary/20 bg-primary/5">
+<div class="relative">
+<img class="w-9 h-9 rounded-full border border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxokUUkOExT2vDvwMLAAZSoapOmxZI8Te2UHIMHOWLSXjdTMzCFbKjgnLuKfZ9vuAITwGtjY7720CGqhwnytO_NNW-I90GGqAxiWShb8RdvsPYd4LkaxMo2Y3i08R0cxbmv5Zs5eaRgp2_5cjIUD3bkjoCwbPyNyN6y-TUQuna6-D9ZEPhP_cmw2EWUaaDxTd2iMArsB4ZRcis7Hgxx_fCju6S_plo8BGetrvYw6632KuM-7Z7SlSKnECJGPr9Wecfe7Jndh-MrQqZ"/>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-primary text-white text-[8px] flex items-center justify-center rounded-full font-bold">1</div>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-bold text-on-surface truncate">Rahul (You)</p>
+<p class="text-[10px] text-on-surface-variant">1,250 XP</p>
+</div>
+<span class="material-symbols-outlined text-primary !text-base">trending_up</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-transparent hover:border-outline transition-colors">
+<div class="relative">
+<img class="w-9 h-9 rounded-full border border-outline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMOgyo9DQ98hhP6LlVeSgEYZf_wj63laIrH49t3RYcAX7TyaoUShZqjyCf8cXjWpqlbRJgB1srimvDumUqniSrHEwf72Cr1YQIkZJUO62flPhuo1i9ad-myTTGnoLcVovfs0ejItsXvpfKFmTQI9VYJstoulGsRB8Ur6bwPJM97lcJLGH50XfKsMaNcG6WhcTs485xlj6QqImbkV9c6G57DW58uPmAwhuGcgCMAOSRNhOYDEWzm0YdaYVx-wV8RHIqeMLiPQYXvvEe"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-medium text-on-surface truncate">Ananya S.</p>
+<p class="text-[10px] text-on-surface-variant">1,120 XP</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl border border-transparent hover:border-outline transition-colors">
+<div class="relative">
+<img class="w-9 h-9 rounded-full border border-outline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqNL0Zjp1v15DzUXfokrvLqTaUZ72V9ClH9s5cZYLLBeXPsJvoIjiYyWNxYZV5c1Fe5utBl-iYUIvF-acHD1RXvBVldIseJtSwR0ZWEXmVW8Vq5Ao7AoLPXu-bWVeTHefZzzs5KTJTazS9JGJDL4hW3iNFoElA_KaqUsEwdIVAJkLI_8O8TpE3bkc9IpWfWXSU4ml5qx2joXFfLhYutnY2boQF-e7tfe0S8nPHGxQi-YqAFrgPmwRiGwVTgKcvJ2PYhw6afGbwHgmG"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-medium text-on-surface truncate">Ishaan K.</p>
+<p class="text-[10px] text-on-surface-variant">980 XP</p>
+</div>
+</div>
+</div>
+<div class="mt-6 text-center">
+<a class="text-xs font-bold text-primary hover:underline underline-offset-4" href="#">Full Leaderboard</a>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Feedback Toast -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 bg-on-surface text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-3 opacity-0 transition-all duration-300 z-[60]" id="feedback-toast">
+<span class="material-symbols-outlined !text-lg" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-xs font-bold">Well Done! You earned +10 XP</span>
+</div>
+<script>
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if(btn.textContent.trim().includes('Quiz') || btn.textContent.trim().includes('Explain')) {
+                    const toast = document.getElementById('feedback-toast');
+                    toast.classList.remove('opacity-0', '-translate-y-4');
+                    toast.classList.add('opacity-100', 'translate-y-0');
+                    setTimeout(() => {
+                        toast.classList.add('opacity-0', '-translate-y-4');
+                        toast.classList.remove('opacity-100', 'translate-y-0');
+                    }, 3000);
+                }
+            });
+        });
+
+        const input = document.querySelector('input');
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && input.value.trim() !== '') {
+                const chatContainer = document.querySelector('.chat-container');
+                const userMsg = input.value;
+                input.value = '';
+                
+                const userDiv = document.createElement('div');
+                userDiv.className = 'flex justify-end';
+                userDiv.innerHTML = `
+                    <div class="bg-primary text-white p-4 rounded-2xl chat-bubble-user max-w-[75%]">
+                        <p class="text-sm leading-relaxed">${userMsg}</p>
+                    </div>
+                `;
+                chatContainer.appendChild(userDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+
+                setTimeout(() => {
+                    const botDiv = document.createElement('div');
+                    botDiv.className = 'flex gap-4';
+                    botDiv.innerHTML = `
+                        <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center shrink-0 border border-outline">
+                            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=StudyBuddy" alt="AI Mascot" class="w-8 h-8">
+                        </div>
+                        <div class="max-w-[85%]">
+                            <div class="bg-surface-container-low p-5 rounded-2xl chat-bubble-ai border border-outline/50">
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Thinking about "${userMsg}"... Let's explore that together! Would you like a quick summary or a quiz?</p>
+                            </div>
+                        </div>
+                    `;
+                    chatContainer.appendChild(botDiv);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }, 1000);
+            }
+        });
+    </script>
+</body></html>

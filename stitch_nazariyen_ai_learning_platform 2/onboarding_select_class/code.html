@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nazariyen - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9ff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "tertiary-fixed": "#ffddb8",
+                    "secondary-container": "#6cf8bb",
+                    "on-surface": "#0b1c30",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-surface-variant": "#434655",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-primary-container": "#eeefff",
+                    "on-secondary-container": "#00714d",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#004ac6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-primary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-container": "#2563eb",
+                    "outline-variant": "#c3c6d7",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "inverse-surface": "#213145",
+                    "on-tertiary-container": "#ffeedd",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary-container": "#996100",
+                    "surface-container-high": "#dce9ff",
+                    "error": "#ba1a1a",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#002113",
+                    "secondary": "#006c49",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary": "#784b00",
+                    "surface-variant": "#d3e4fe",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#0053db",
+                    "secondary-fixed": "#6ffbbe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "container-max": "1200px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .class-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .class-card.selected { border-color: #004ac6; background-color: #eff4ff; transform: translateY(-4px); }
+        .class-card.selected .check-icon { opacity: 1; transform: scale(1); }
+        .bg-pattern { background-image: radial-gradient(#d3e4fe 1px, transparent 1px); background-size: 24px 24px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface overflow-x-hidden min-h-screen">
+<!-- Top Navigation Bar (Hidden shell during onboarding as per mandate) -->
+<!-- Onboarding flow suppresses standard TopAppBar to maintain focus -->
+<main class="relative min-h-screen flex flex-col items-center justify-start bg-pattern pb-24">
+<!-- Progress Indicator -->
+<div class="w-full max-w-[600px] mt-12 px-margin-mobile md:px-0">
+<div class="flex justify-between items-center mb-base">
+<span class="font-label-md text-label-md text-primary">Step 1 of 3</span>
+<span class="font-label-md text-label-md text-outline">Class Selection</span>
+</div>
+<div class="h-4 w-full bg-surface-container rounded-full overflow-hidden relative shadow-inner">
+<div class="h-full w-1/3 bg-secondary-fixed-dim rounded-full transition-all duration-700 ease-out flex items-center justify-end pr-2" id="progress-bar">
+<div class="h-2 w-2 bg-white rounded-full animate-pulse"></div>
+</div>
+</div>
+</div>
+<!-- Header Section -->
+<div class="text-center mt-12 mb-16 px-margin-mobile">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-4 tracking-tight">
+                Welcome to <span class="text-primary">Nazariyen!</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[500px] mx-auto">
+                Let's get to know you. Which class are you currently in?
+            </p>
+</div>
+<!-- Class Grid -->
+<div class="w-full max-w-container-max px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6" id="class-grid">
+<!-- Class 1-12 Cards -->
+<script>
+                    const classes = [
+                        { id: 1, label: 'Class 1', icon: 'child_care', desc: 'Primary' },
+                        { id: 2, label: 'Class 2', icon: 'cruelty_free', desc: 'Primary' },
+                        { id: 3, label: 'Class 3', icon: 'potted_plant', desc: 'Primary' },
+                        { id: 4, label: 'Class 4', icon: 'palette', desc: 'Primary' },
+                        { id: 5, label: 'Class 5', icon: 'auto_stories', desc: 'Primary' },
+                        { id: 6, label: 'Class 6', icon: 'rocket_launch', desc: 'Middle' },
+                        { id: 7, label: 'Class 7', icon: 'biotech', desc: 'Middle' },
+                        { id: 8, label: 'Class 8', icon: 'functions', desc: 'Middle' },
+                        { id: 9, label: 'Class 9', icon: 'architecture', desc: 'Secondary' },
+                        { id: 10, label: 'Class 10', icon: 'psychology', desc: 'Secondary' },
+                        { id: 11, label: 'Class 11', icon: 'history_edu', desc: 'Higher Sec' },
+                        { id: 12, label: 'Class 12', icon: 'school', desc: 'Higher Sec' },
+                    ];
+
+                    const grid = document.getElementById('class-grid');
+                    classes.forEach(c => {
+                        const card = document.createElement('div');
+                        card.className = "class-card group cursor-pointer relative bg-surface-container-lowest p-6 rounded-xl border-2 border-outline-variant/30 shadow-[0_4px_20px_rgba(37,99,235,0.06)] hover:shadow-lg hover:border-primary/40 flex flex-col items-center justify-center text-center";
+                        card.onclick = () => selectClass(card, c.id);
+                        card.innerHTML = `
+                            <div class="w-14 h-14 rounded-full bg-surface-container flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined text-primary text-[28px] transition-all" data-icon="${c.icon}">${c.icon}</span>
+                            </div>
+                            <span class="font-headline-md text-headline-md text-on-surface mb-1">${c.label}</span>
+                            <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">${c.desc}</span>
+                            <div class="check-icon opacity-0 scale-50 transition-all absolute top-3 right-3 bg-primary text-white rounded-full p-1 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[16px] font-bold" data-icon="check" style="font-variation-settings: 'FILL' 0, 'wght' 700;">check</span>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    });
+
+                    function selectClass(element, id) {
+                        document.querySelectorAll('.class-card').forEach(el => el.classList.remove('selected'));
+                        element.classList.add('selected');
+                        document.getElementById('next-btn').disabled = false;
+                        document.getElementById('next-btn').classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                </script>
+</div>
+</div>
+<!-- Sticky Bottom Navigation (Contextual FAB for Action) -->
+<div class="fixed bottom-0 left-0 w-full p-6 bg-surface/80 backdrop-blur-md border-t border-outline-variant/20 flex justify-center z-50">
+<div class="w-full max-w-container-max flex justify-between items-center px-margin-mobile">
+<button class="flex items-center gap-2 text-outline font-label-md text-label-md hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                    Back
+                </button>
+<button class="opacity-50 cursor-not-allowed bg-primary-container text-on-primary-container font-label-md text-label-md px-10 py-4 rounded-full shadow-lg flex items-center gap-3 active:scale-95 transition-all hover:bg-primary duration-300 border-b-[3px] border-primary/40" disabled="" id="next-btn">
+                    Next Step
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Decorative Elements (AI Buddy Preview) -->
+<div class="hidden lg:block fixed -bottom-10 -right-10 w-80 h-80 opacity-20 pointer-events-none">
+<img class="w-full h-full object-contain" data-alt="A friendly, high-fidelity 3D rendered robot character with large expressive digital eyes and a smooth white plastic finish. The robot is waving welcomingly against a soft-focus educational background with vibrant floating geometric shapes. The lighting is warm and optimistic, utilizing a palette of sky blues and soft creams to create a supportive and playful atmosphere for students." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0azIKjZvW8t8neaT7eCueA1lAOtJW3oT23da_cwWGfd5jtnhLrl7ne5CnzS_S7OslZELYKKrAH85zVmbka97mUXxCPbMHFQp3b6lzgD9n2AnMAD2kq4Id3DSIPa_I4i_2CB4Ocm9EfXx___w0n82AtvXpD4blkbsIltQkeEBtj0gviQo0cJT_UgBU3MTGjnQii9F-ssrCCwwZUIiRNK4Lzy9YKzKaiGrHmsh8OGc8LAjFUcwlRbr0CrO_TtAfRr4AuFACzlv3gHgQ"/>
+</div>
+<div class="hidden lg:block fixed top-20 -left-20 w-64 h-64 opacity-10 pointer-events-none rotate-12">
+<img class="w-full h-full object-contain" data-alt="Whimsical 3D digital art featuring several brightly colored textbooks and a golden graduation cap floating in a gravity-defying arrangement. The style is clean and corporate modern with soft ambient lighting and diffused shadows. Vibrant shades of primary blue and achievement gold dominate the scene, creating a sense of wonder and educational progress in a minimalist white space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyoLCGU3B1WJ6-mjd77KxmzKuHj5upSxrRnZ3HvM6Xk7DGDTNarKh0oAAR3IY22BGKNO97eRyaaVkt_dU5J90Iw9szVnRrRxa7OHJiRcQ5l_dJ1cmfXE6OmWkoF6uRapbj6XN6C_mM5NNxUcAyuJoakMInNDfkLedi5dCfABniSi4ZA35Rk7nB49S1lnA82zFVopVUs1CECnOl9MLPGwnqXnmC2kk-qLeZ8t3JIux8StCF_TXUY-tUuSUtHeX5ApoRRflCKEXCP4Oi"/>
+</div>
+<script>
+        // Micro-interaction for feedback
+        document.getElementById('next-btn').addEventListener('click', function() {
+            if (!this.disabled) {
+                this.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> Processing...';
+                setTimeout(() => {
+                    alert('Moving to Step 2: Subject Interests!');
+                    window.location.reload(); // Mock transition
+                }, 800);
+            }
+        });
+    </script>
+</body></html>

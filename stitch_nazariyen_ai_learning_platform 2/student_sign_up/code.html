@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Join Nazariyen - Start Your Learning Journey</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .btn-3d {
+            box-shadow: 0 4px 0 0 #003ea8;
+            transition: all 0.1s ease;
+        }
+        .btn-3d:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 0 #003ea8;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f8f9ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary-container": "#6cf8bb",
+                        "on-surface": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-container": "#00714d",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#004ac6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-primary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-primary": "#b4c5ff",
+                        "primary-container": "#2563eb",
+                        "outline-variant": "#c3c6d7",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-container": "#ffeedd",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-container": "#996100",
+                        "surface-container-high": "#dce9ff",
+                        "error": "#ba1a1a",
+                        "outline": "#737686",
+                        "on-secondary-fixed": "#002113",
+                        "secondary": "#006c49",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary": "#784b00",
+                        "surface-variant": "#d3e4fe",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "secondary-fixed": "#6ffbbe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "container-max": "1200px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<main class="min-h-screen grid lg:grid-cols-2">
+<!-- Brand & Mascot Side (Visible on Large Screens) -->
+<section class="hidden lg:flex flex-col justify-center items-center bg-surface-container relative overflow-hidden p-margin-desktop">
+<div class="absolute top-10 left-10">
+<span class="font-headline-lg text-headline-lg font-black tracking-tight text-primary">Nazariyen</span>
+</div>
+<!-- Atmospheric Shapes -->
+<div class="absolute -top-20 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-20 -left-20 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col items-center max-w-md text-center">
+<div class="mb-base animate-float">
+<img class="w-64 h-64 object-contain" data-alt="A friendly and adorable white robot mascot with large expressive blue eyes and rounded limbs, floating playfully in a clean educational setting. The robot is surrounded by semi-transparent holographic icons of math symbols, books, and scientific tools. The background is a soft gradient of light blue and white, matching the professional yet cheerful Nazariyen brand identity. High-key lighting emphasizes a welcoming and optimistic mood for K-12 students." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC5Yd4DFbvdyKFJbnnFnLzXryeZ55kta4X_RYraUy4TG18ZGDcajoJeBXP9vu5nPG7PWBQWn_M0C-OsdUX2jArER1wRfdMWH08tKhKs16cbUr-TA1Pzz5qSOl0ClbKMEgbu9hmK_7pZpJGW7gMpiWq3pb1OVI1i4POdnee__ujrtHNryaquW0Qh1nyGyDprN_5dTsT1reTHJjU6cZzEJ-y4664Kq1KjdLNVDkGN-_PNXcKhTXFPWww_93S2p-IgGsq7rwd3gVx4fAi"/>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-4">Start your learning adventure!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Join thousands of Super Learners exploring the future of education with their very own AI Study Buddy.</p>
+<!-- Quick Achievement Chips -->
+<div class="mt-8 flex flex-wrap justify-center gap-3">
+<div class="bg-surface-container-lowest shadow-[0_4px_20px_rgba(37,99,235,0.08)] px-4 py-2 rounded-xl border border-outline-variant/30 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-md text-label-md">Gamified Learning</span>
+</div>
+<div class="bg-surface-container-lowest shadow-[0_4px_20px_rgba(37,99,235,0.08)] px-4 py-2 rounded-xl border border-outline-variant/30 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-md text-label-md">24/7 AI Tutor</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Signup Form Side -->
+<section class="flex flex-col justify-center items-center p-margin-mobile md:p-margin-desktop bg-surface relative">
+<!-- Mobile Header -->
+<div class="lg:hidden absolute top-8 left-margin-mobile flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-black tracking-tight text-primary">Nazariyen</span>
+</div>
+<div class="w-full max-w-md">
+<div class="mb-10 text-center lg:text-left">
+<h2 class="font-headline-lg text-headline-lg lg:text-headline-xl text-on-surface mb-2">Create Account</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Ready to level up your skills today?</p>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2" for="name">
+<span class="material-symbols-outlined text-primary text-[18px]">person</span>
+                            Full Name
+                        </label>
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/50 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline" id="name" placeholder="Alex Johnson" type="text"/>
+</div>
+<!-- Email/Phone -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2" for="contact">
+<span class="material-symbols-outlined text-primary text-[18px]">alternate_email</span>
+                            Email or Phone Number
+                        </label>
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/50 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline" id="contact" placeholder="alex@school.com" type="text"/>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-2" for="password">
+<span class="material-symbols-outlined text-primary text-[18px]">lock</span>
+                            Create Password
+                        </label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/50 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 py-2">
+<div class="flex items-center h-5">
+<input class="w-5 h-5 text-primary border-outline-variant/50 rounded-lg focus:ring-primary" id="terms" type="checkbox"/>
+</div>
+<label class="font-body-md text-label-md text-on-surface-variant" for="terms">
+                            I agree to the <a class="text-primary font-bold hover:underline" href="#">Terms of Service</a> and <a class="text-primary font-bold hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<!-- CTA Button -->
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-label-md text-label-md uppercase tracking-widest btn-3d flex items-center justify-center gap-2" type="submit">
+                        Create My Account
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- Divider -->
+<div class="relative py-4 flex items-center">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline uppercase tracking-widest">or sign up with</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+<!-- Social Signup -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors font-label-md text-label-md" type="button">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRQy0ZZlPLe8JZs7JrLtJW2XGYRJOQhve9QXktVO9GaQQ-L5tEDk8r-z_WbPQzxzJiGe10iArdZtkE79lz8thEkeBY3Zm8GZRzAx_kyeEnfImnVX85GdtyyYrkK6fn7sQCiXOlX1eUIv1F39Yk5LoEKJJZsSvlkba9kkPUbucSb7RIeSyMiLeH4ZDgemnACYL15biJaa12qZoQOnKpM8ZqGfttin01or39XkYmkMjTXaXyaooDi0Yfvdmkwzh4UGijdRsxUsho7KAM"/>
+                            Google
+                        </button>
+<button class="flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[#1877F2]" style="font-variation-settings: 'FILL' 1;">social_leaderboard</span>
+                            Facebook
+                        </button>
+</div>
+<!-- Login Redirect -->
+<div class="text-center pt-4">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Already have an account? 
+                            <a class="text-primary font-bold hover:underline ml-1" href="#">Login</a>
+</p>
+</div>
+</form>
+</div>
+<!-- Decorative Footer Element -->
+<div class="absolute bottom-8 right-8 hidden lg:block">
+<div class="flex items-center gap-2 opacity-30 grayscale hover:opacity-100 hover:grayscale-0 transition-all cursor-default">
+<span class="material-symbols-outlined text-primary">security</span>
+<span class="font-label-sm text-label-sm uppercase tracking-tighter">Verified Secure Registration</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Feedback Toast (Simulated interaction) -->
+<div class="fixed bottom-10 left-1/2 -translate-x-1/2 translate-y-20 bg-tertiary-fixed text-on-tertiary-fixed px-6 py-4 rounded-full shadow-lg flex items-center gap-3 transition-all duration-500 opacity-0 z-50" id="toast">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grade</span>
+<span class="font-label-md text-label-md">Setting up your profile...</span>
+</div>
+<script>
+        // Simple micro-interaction for the password toggle
+        const togglePassword = document.querySelector('[type="button"] .material-symbols-outlined');
+        const passwordInput = document.getElementById('password');
+
+        if(togglePassword) {
+            togglePassword.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                togglePassword.textContent = type === 'password' ? 'visibility' : 'visibility_off';
+            });
+        }
+
+        // Mock form submission
+        const form = document.querySelector('form');
+        const toast = document.getElementById('toast');
+
+        form.addEventListener('submit', () => {
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        });
+    </script>
+</body></html>

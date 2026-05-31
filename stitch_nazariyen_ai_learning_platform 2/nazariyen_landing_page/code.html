@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nazariyen - Your Personalized Path to Mastery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9ff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "tertiary-fixed": "#ffddb8",
+                    "secondary-container": "#6cf8bb",
+                    "on-surface": "#0b1c30",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-surface-variant": "#434655",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-primary-container": "#eeefff",
+                    "on-secondary-container": "#00714d",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#004ac6",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "on-primary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-container": "#2563eb",
+                    "outline-variant": "#c3c6d7",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "inverse-surface": "#213145",
+                    "on-tertiary-container": "#ffeedd",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary-container": "#996100",
+                    "surface-container-high": "#dce9ff",
+                    "error": "#ba1a1a",
+                    "outline": "#737686",
+                    "on-secondary-fixed": "#002113",
+                    "secondary": "#006c49",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed": "#dbe1ff",
+                    "tertiary": "#784b00",
+                    "surface-variant": "#d3e4fe",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#0053db",
+                    "secondary-fixed": "#6ffbbe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "40px",
+                    "container-max": "1200px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8f9ff; color: #0b1c30; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .btn-3d { transition: transform 0.1s, box-shadow 0.1s; border-bottom-width: 4px; }
+        .btn-3d:active { transform: translateY(2px); border-bottom-width: 2px; }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+        @media (max-width: 768px) { .bento-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body class="bg-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/90 backdrop-blur-md fixed top-0 z-40 w-full border-b border-outline-variant/30 shadow-[0_4px_20px_rgba(37,99,235,0.08)]">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-base">
+<span class="font-headline-lg text-headline-lg font-black tracking-tight text-primary">Nazariyen</span>
+</div>
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all" href="#features">Features</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all" href="#library">Library</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all" href="#careers">Careers</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all" href="#testimonials">Success Stories</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full text-primary font-label-md">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>1,250 XP</span>
+</div>
+<button class="bg-primary text-on-primary font-label-md px-6 py-2 rounded-full btn-3d border-blue-800 shadow-lg">Get Started</button>
+</div>
+</div>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative overflow-hidden px-margin-mobile md:px-margin-desktop py-16 md:py-24">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 text-center md:text-left z-10">
+<div class="inline-flex items-center gap-2 bg-secondary-container/30 text-on-secondary-container px-4 py-2 rounded-full mb-6 animate-bounce">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm uppercase tracking-wider">AI-Powered Learning for NCERT</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-6 leading-tight">
+                        Your Personalized Path to <span class="text-primary italic">Mastery</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                        Unlock your potential with Nazariyen. From interactive NCERT resources to your very own AI Study Buddy, we provide everything you need to excel in your K-12 journey.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+<button class="bg-primary text-on-primary font-label-md px-8 py-4 rounded-xl btn-3d border-blue-900 shadow-xl flex items-center justify-center gap-2 text-lg">
+                            Start Learning Adventure
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-surface-container-highest text-primary font-label-md px-8 py-4 rounded-xl hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">play_circle</span>
+                            Watch Demo
+                        </button>
+</div>
+</div>
+<div class="flex-1 relative">
+<div class="relative w-full aspect-square max-w-[500px] mx-auto">
+<!-- Abstract decorative shapes -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary-container rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-container rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse delay-700"></div>
+<img alt="Happy student learning with Nazariyen" class="w-full h-full object-cover rounded-3xl shadow-2xl relative z-10 border-8 border-white" data-alt="A diverse, smiling high school student in a brightly lit modern study space, holding a sleek digital tablet showing a vibrant educational interface. The room has large windows with soft morning light, clean white walls, and minimal wooden furniture. The aesthetic is high-end, clean, and optimistic with soft blue and green color accents that match the educational brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs9p1xGmaXZ-PsX8MK1n6qL-4RXUyn_ATv6dH5KM6uGSQ5Gn9WC4_p-4WYYboSYXaYVed-u2zRDbnTuX01lXe1ORTbMto43no1a5YMYHBvL922W8XJIuO4T1YLMxSCqBmLTUZXKUNEEXzvR8KlU9auCfXxsF_9g69ccqrBxxO9319ypebjXbAItRt497v_ZXLO-rmb4c6LXpUoJB3YwFJX9yxhYrn_m__3h8yAnyh4YUvzLa04rIYBQzuAMrBUmg5d1qxP1u_FJ2-V"/>
+<!-- Floating chips -->
+<div class="absolute top-10 -right-6 z-20 glass-card p-4 rounded-2xl shadow-lg animate-float">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface">Topic Mastered!</p>
+<p class="text-[10px] text-on-surface-variant">Quadratic Equations</p>
+</div>
+</div>
+</div>
+<div class="absolute bottom-20 -left-6 z-20 glass-card p-4 rounded-2xl shadow-lg animate-float-delayed">
+<div class="flex items-center gap-3">
+<img alt="AI Buddy" class="w-10 h-10 rounded-full" data-alt="A friendly, cute white and blue robot avatar with large expressive digital eyes and a small antennae, designed in a modern 3D clay-morphism style. The robot looks helpful and welcoming, sitting against a soft pastel background with small floating sparkles to indicate high intelligence and friendliness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkOgPRBOpX1GbokymJFIairMwVHQzviiPKVHb7o07s0P0KZLmrGqnOqEmN79zOM9HGjpR-vMlHkozTNQFLhFw_3Y2DS-LhXKJIfcJiPP7cLUrawogDONT1dBP-iGJrzEHaB30SVEs1tsytxPcglZGLk3OQUydvOdeOEbj6RMLBCFQrV69CQyes8Zf8P4lDpvoDxXl86oDRwmIcjOmZ7SWiRdCC4iUT3dkf3Fa9YPTRSyNTNeT8RgH75ouBJOQDA2ONOQj06j5MPdXO"/>
+<div>
+<p class="font-label-sm text-on-surface">AI Buddy Active</p>
+<div class="flex gap-1">
+<div class="w-1 h-1 rounded-full bg-primary animate-bounce"></div>
+<div class="w-1 h-1 rounded-full bg-primary animate-bounce delay-100"></div>
+<div class="w-1 h-1 rounded-full bg-primary animate-bounce delay-200"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Features Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-20 bg-surface-container-low/50" id="features">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Why Students Love Nazariyen</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                        We've built a holistic ecosystem that supports every aspect of your learning, from daily doubts to long-term career goals.
+                    </p>
+</div>
+<div class="bento-grid">
+<!-- AI Study Buddy - Large Card -->
+<div class="md:col-span-8 bg-white rounded-3xl p-8 shadow-[0_4px_20px_rgba(37,99,235,0.08)] flex flex-col md:flex-row gap-8 overflow-hidden group hover:shadow-xl transition-all duration-300">
+<div class="flex-1">
+<div class="w-14 h-14 bg-primary-container/10 rounded-2xl flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-[32px]">smart_toy</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">AI Study Buddy</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                                Stuck on a complex math problem? Your AI Buddy is available 24/7 to explain concepts in simple, relatable terms. It learns your pace and adapts its teaching style just for you.
+                            </p>
+<button class="text-primary font-label-md flex items-center gap-2 group">
+                                Learn more about AI 
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="flex-1 bg-surface-container rounded-2xl p-4 relative min-h-[200px]">
+<div class="space-y-4">
+<div class="bg-white p-3 rounded-2xl rounded-bl-none shadow-sm max-w-[80%]">
+<p class="text-sm">"How do I balance this chemical equation?"</p>
+</div>
+<div class="bg-primary text-on-primary p-3 rounded-2xl rounded-br-none shadow-md ml-auto max-w-[80%]">
+<p class="text-sm">"Let's break it down! First, count the atoms on both sides..."</p>
+</div>
+</div>
+<div class="absolute bottom-4 right-4">
+<img class="w-16 h-16 drop-shadow-lg" data-alt="A cute, friendly robot mascot with a white body and bright blue glowing accents. The robot is giving a friendly wave with a digital smile on its screen-face. The style is 3D render, high-detail, sitting in a clean, soft-lit environment with educational icons floating around it." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrnz4fJtJ0MX3XGWX6L7w-_8SOyk_EtGJN2_khgp8kw0ioNCqU4-doWPnz6_WlxhWSWtMP1Ta8Z_QkyBqCxPD6gpf2lr_xGBkHAvVKHNQpPOcPuVPhRZB8TztN_iIODj5t20CPswG-UnXK0AXfO-8ip4_YdH5a1v7JOH_8CDrJxtdRUHJuGr8CuTRAcMpdvKgBkUVzHSjRqpexNydHB6Rq6jrXieQpd5Efq4mhFaeG_aKWAuY-HPCu53WC2jYv15XCuLmFoymISVme"/>
+</div>
+</div>
+</div>
+<!-- Gamified Learning -->
+<div class="md:col-span-4 bg-tertiary-fixed rounded-3xl p-8 shadow-[0_4px_20px_rgba(37,99,235,0.08)] group hover:scale-[1.02] transition-all">
+<div class="w-14 h-14 bg-on-tertiary-fixed/10 rounded-2xl flex items-center justify-center text-on-tertiary-fixed mb-6">
+<span class="material-symbols-outlined text-[32px]">workspace_premium</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-tertiary-fixed mb-4">Gamified Quests</h3>
+<p class="font-body-md text-body-md text-on-tertiary-fixed-variant mb-8">
+                            Turn your study sessions into epic adventures. Earn XP, collect badges, and climb the leaderboard while mastering NCERT chapters.
+                        </p>
+<div class="w-full h-4 bg-white/50 rounded-full overflow-hidden mb-2">
+<div class="h-full bg-secondary-fixed-dim w-3/4 rounded-full relative">
+<div class="absolute right-0 -top-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[14px] text-yellow-500" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="text-right font-label-sm text-on-tertiary-fixed">75% to Next Level</p>
+</div>
+<!-- NCERT Library -->
+<div class="md:col-span-5 bg-surface-container-highest rounded-3xl p-8 shadow-[0_4px_20px_rgba(37,99,235,0.08)] flex flex-col justify-between group hover:-translate-y-2 transition-all">
+<div>
+<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-[32px]">library_books</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Digital Library</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                Every NCERT book from Class 1-12, enhanced with interactive videos, 3D models, and quick-revision notes.
+                            </p>
+</div>
+<div class="mt-8 flex -space-x-4">
+<div class="w-20 h-28 bg-white rounded-lg shadow-md border border-outline-variant transform -rotate-6 flex items-center justify-center">
+<span class="font-bold text-xs">MATHS</span>
+</div>
+<div class="w-20 h-28 bg-primary rounded-lg shadow-md border border-primary/20 z-10 flex flex-col items-center justify-center text-white p-2 text-center">
+<span class="font-bold text-[10px]">SCIENCE</span>
+<div class="w-8 h-1 bg-white/30 mt-2"></div>
+</div>
+<div class="w-20 h-28 bg-white rounded-lg shadow-md border border-outline-variant transform rotate-6 flex items-center justify-center">
+<span class="font-bold text-xs">HISTORY</span>
+</div>
+</div>
+</div>
+<!-- Career Pathways -->
+<div class="md:col-span-7 bg-inverse-surface text-white rounded-3xl p-8 shadow-[0_4px_20px_rgba(37,99,235,0.08)] relative overflow-hidden group">
+<div class="relative z-10">
+<div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-6">
+<span class="material-symbols-outlined text-[32px]">route</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Career Pathways</h3>
+<p class="font-body-md text-body-md text-surface-variant/80 mb-8 max-w-md">
+                                Don't just learn, discover your future. Our AI helps you connect what you learn today with the career of your dreams through structured skill-maps.
+                            </p>
+<div class="flex flex-wrap gap-4">
+<span class="px-4 py-2 bg-primary/30 rounded-full border border-primary/50 text-sm">Space Science</span>
+<span class="px-4 py-2 bg-secondary/30 rounded-full border border-secondary/50 text-sm">Bio-Tech</span>
+<span class="px-4 py-2 bg-tertiary-container/30 rounded-full border border-tertiary-container/50 text-sm">Game Design</span>
+</div>
+</div>
+<div class="absolute right-0 top-0 h-full w-1/3 opacity-20 hidden md:block">
+<!-- Dashed flowchart visual -->
+<svg class="w-full h-full" viewbox="0 0 100 200">
+<circle cx="50" cy="50" fill="white" r="10"></circle>
+<circle cx="30" cy="100" fill="#2563eb" r="8"></circle>
+<circle cx="70" cy="150" fill="#6cf8bb" r="8"></circle>
+<path d="M 50 60 L 30 92" stroke="white" stroke-dasharray="4"></path>
+<path d="M 50 60 L 70 142" stroke="white" stroke-dasharray="4"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="px-margin-mobile md:px-margin-desktop py-20 bg-surface" id="testimonials">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Inspiring Success</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg">
+                            Join thousands of students who have transformed their learning experience with Nazariyen.
+                        </p>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 rounded-full border-2 border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center bg-primary text-white hover:bg-primary-container transition-colors shadow-lg">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="bg-white p-8 rounded-3xl shadow-[0_4px_20px_rgba(37,99,235,0.06)] border border-outline-variant/20 hover:border-primary/30 transition-all group">
+<div class="flex text-yellow-500 mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface-variant mb-8">
+                            "The AI Study Buddy is like having a private tutor available at 11 PM. It helped me clear my physics doubts in minutes that usually take hours of searching."
+                        </p>
+<div class="flex items-center gap-4">
+<img alt="Student Profile" class="w-12 h-12 rounded-full border-2 border-primary/20" data-alt="Headshot of a cheerful 15-year-old girl student with bright, intelligent eyes and a confident smile. She is wearing a simple casual outfit against a soft-focus background of books and educational materials. High-key lighting, warm tones, and professional digital portrait photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ5EoVcuPcbt67CRhtIyrB2dZ3JiMvSrXY8Kxxx9ET-gz-Nd2h0kH88H4NMelCvOneq_PbSxVab4d_rPAdAQclgDWN3Pjoaz4lfo7r2LkBX6Kzg5ARE0TKPdyAzLY8zNL2EeO0Lano_WT1Q1CFhOKnR-2StFlG_27cCiOHqGjO45bmqHh2xD-dhNx5PxAthwyFW4Z7rLggiU_xVw4Ld3dxwUgdzAlWsJkcHTkwB81ButlSkbZVoS7fmWhY4zU8mKp2b7FP4Ysa3KkJ"/>
+<div>
+<p class="font-label-md text-on-surface">Priya Sharma</p>
+<p class="text-xs text-on-surface-variant">Class 11, Science Stream</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-white p-8 rounded-3xl shadow-[0_4px_20px_rgba(37,99,235,0.06)] border border-outline-variant/20 hover:border-primary/30 transition-all group scale-105 border-primary/20 z-10">
+<div class="flex text-yellow-500 mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface-variant mb-8">
+                            "The gamified learning paths actually make me want to study. I love the Quest system and the career flowchart helped me decide I want to pursue Aerospace Engineering!"
+                        </p>
+<div class="flex items-center gap-4">
+<img alt="Student Profile" class="w-12 h-12 rounded-full border-2 border-primary/20" data-alt="Portrait of a young 14-year-old boy student wearing a clean school shirt, smiling enthusiastically. He has a modern, neat hairstyle. The lighting is bright and clear, with a background that suggests a high-tech learning environment with subtle blue glows. High-quality professional student profile photo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7ioqKUwMi3_J6bgh18v8sQCfU93WHcuLNYkJMGyoI7iq-DOhhEnqi12qIuGsYiLiLfrXaHwUlAg_h6Ubeejqk1wODzn2x4X2kPbJxeeoIe3CJ6VhN6nJGDiu-R8qjGoVGyuLmbk2gZ_GxYZP8Tv8Xy7powPO9ZXGxsVqLPw-xF1NQKu0FW4Xj2A8wnmbQmUPprTXNMMmSBryjxgljx-U1MMAT0tdlHGsdJCuAMItYLCDjZYjJgazqPRNTVGAnPyA4yUaRk7dwToDN"/>
+<div>
+<p class="font-label-md text-on-surface">Arjun Verma</p>
+<p class="text-xs text-on-surface-variant">Class 9, Topper</p>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-white p-8 rounded-3xl shadow-[0_4px_20px_rgba(37,99,235,0.06)] border border-outline-variant/20 hover:border-primary/30 transition-all group">
+<div class="flex text-yellow-500 mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md italic text-on-surface-variant mb-8">
+                            "As a parent, I love the progress tracking. I can see exactly where my son is excelling and where he needs help without having to hover over him."
+                        </p>
+<div class="flex items-center gap-4">
+<img alt="Parent Profile" class="w-12 h-12 rounded-full border-2 border-primary/20" data-alt="Friendly, professional-looking woman in her late 30s, representing a supportive parent. She has a warm, trusting smile and is captured in a bright, modern domestic setting. The style is clean, optimistic, and trustworthy, with high-quality soft-focus photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtx41q0L99spsAZZi9LdC-GdMX47R8vvRMyoaOR1PZ71tiT_EgRiYOMJaMA53tfHajk3g0qURGousUxGJEH1JDy1uSCGhqU56lgSet_tPn_KZLARFFCg2Rteb_SjUKqtSK040ebeVvGaoNz8ACMLN8bZpUvh_SgEplZ52v22b2LVPYrA0zMCpUaN_0I4rs0ZvHouLiCPTF3BRolg8c8frn4axnewoCuq4-ItPuryjUACINInPqTyEc2NRwok9feMJ5n0t5bvtAGjFM"/>
+<div>
+<p class="font-label-md text-on-surface">Dr. Meera Iyer</p>
+<p class="text-xs text-on-surface-variant">Parent of 7th Grader</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-24">
+<div class="max-w-container-max mx-auto relative overflow-hidden bg-primary rounded-[40px] p-12 md:p-24 text-center">
+<!-- Background decorative elements -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+<div class="relative z-10">
+<h2 class="font-headline-xl text-headline-xl text-on-primary mb-6">Ready to Master Your Future?</h2>
+<p class="font-body-lg text-body-lg text-on-primary/80 mb-12 max-w-2xl mx-auto">
+                        Join Nazariyen today and experience the future of personalized education. Your AI Buddy is waiting to help you ace your next big test!
+                    </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+<button class="bg-white text-primary font-headline-md px-10 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-transform btn-3d border-slate-200">
+                            Start Your Learning Adventure
+                        </button>
+</div>
+<p class="mt-8 text-on-primary/60 font-label-sm">No credit card required • Free access to NCERT Library</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest/50 py-16 px-margin-mobile md:px-margin-desktop border-t border-outline-variant/30">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-lg text-headline-lg font-black tracking-tight text-primary mb-4 block">Nazariyen</span>
+<p class="font-body-md text-on-surface-variant mb-6">
+                        Empowering the next generation of thinkers, creators, and leaders through AI-powered education.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined text-[20px]">mail</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider">Resources</h4>
+<ul class="space-y-4 font-body-md text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">NCERT Library</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sample Papers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">AI Buddy Help</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Study Planners</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider">Explore</h4>
+<ul class="space-y-4 font-body-md text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Career Paths</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Leaderboards</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Achievements</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Daily Quests</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface mb-6 uppercase tracking-wider">Support</h4>
+<ul class="space-y-4 font-body-md text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant text-sm">
+<p>© 2024 Nazariyen Education Tech. All rights reserved.</p>
+<div class="flex gap-8">
+<span>English (IN)</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>
+<span>All Systems Operational</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for scroll effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            // Add classes for intersection animation
+            document.querySelectorAll('.bento-grid > div').forEach(el => {
+                el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body></html>
