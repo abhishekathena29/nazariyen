@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Icon from '../../components/Icon'
+import { useAuth } from '../../context/AuthContext'
 
 const SUBJECT_ILLO =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuD4_vuCwrL8t7xg5xqvV33PKzrxDrMGH9DwSYAmCi0YGEYUXmaln9v2a0sOoZI4f_eJpJy0F1OVwAujWca_cPcf9ahK8q5hR3_w-zZglXC4zcRttC-A3okFXnh0PcGhR09Pvp_PHsuPa1aEIEGV3J9Jte5Pr5Tvcyx1o_nGgv0xjQgg9DY2vebB7YfXR3HeRk-sSyAJERh6XA4IwGAW58Uo41Q7cqDYfbyoys0VkU25ijHLU4UYl5RN2E-xr_UQUgqGTUkv6UxD3CuB'
@@ -19,7 +20,14 @@ const SUBJECTS = [
 
 export default function Interests() {
   const navigate = useNavigate()
+  const { saveProfile } = useAuth()
   const [selected, setSelected] = useState<Set<string>>(new Set())
+
+  async function handleNext() {
+    if (selected.size === 0) return
+    await saveProfile({ interests: Array.from(selected) })
+    navigate('/onboarding/buddy')
+  }
 
   const toggle = (name: string) => {
     setSelected((prev) => {
@@ -119,7 +127,7 @@ export default function Interests() {
                 </button>
                 <button
                   disabled={selected.size === 0}
-                  onClick={() => navigate('/onboarding/buddy')}
+                  onClick={handleNext}
                   className="px-10 py-4 bg-primary text-on-primary rounded-full font-label-md text-label-md btn-3d flex items-center gap-2 disabled:opacity-50 disabled:pointer-events-none"
                 >
                   Next Step

@@ -1,39 +1,45 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Icon from '../components/Icon'
+import { useLang } from '../context/LanguageContext'
+import { CAREERS, CAREER_CATEGORIES, careerByKey, type Category } from '../data/careers'
 
-const CAREERS = [
-  { key: 'doctor', emoji: '👩‍⚕️', bg: 'bg-red-50', name: 'Doctor', desc: 'Heal people and make the world a healthier place through medicine.', tags: ['High Growth', 'Scientific'] },
-  { key: 'dev', emoji: '👨‍💻', bg: 'bg-blue-50', name: 'Software Developer', desc: 'Build the next big app or solve complex problems with code.', tags: ['Tech Focus', 'Analytical'] },
-  { key: 'pilot', emoji: '✈️', bg: 'bg-sky-50', name: 'Pilot', desc: 'Travel the world and master the skies in commercial or defense aviation.', tags: ['Adventure', 'High Skill'] },
-  { key: 'designer', emoji: '🎨', bg: 'bg-pink-50', name: 'Designer', desc: 'Create visual stories and shape how users interact with products.', tags: ['Creative', 'Versatile'] },
-  { key: 'entrepreneur', emoji: '📊', bg: 'bg-amber-50', name: 'Entrepreneur', desc: 'Turn ideas into reality by building your own business and teams.', tags: ['Leadership', 'Innovation'] },
-  { key: 'ai', emoji: '🤖', bg: 'bg-purple-50', name: 'AI Specialist', desc: 'Teach machines to think and help shape the future of technology.', tags: ['Future Proof', 'Mathematics'] },
+const NODE_STYLES = [
+  { bg: 'bg-primary-container', text: 'text-on-primary-container' },
+  { bg: 'bg-tertiary-fixed', text: 'text-on-tertiary-fixed' },
+  { bg: 'bg-secondary-container', text: 'text-on-secondary-container' },
+  { bg: 'bg-primary', text: 'text-on-primary' },
 ]
 
-const PATHWAY = [
-  { icon: 'school', label: '11th PCB', sub: 'Core Subjects', bg: 'bg-primary-container', text: 'text-on-primary-container' },
-  { icon: 'edit_note', label: 'NEET Exam', sub: 'Entrance Test', bg: 'bg-tertiary-fixed', text: 'text-on-tertiary-fixed' },
-  { icon: 'apartment', label: 'MBBS', sub: 'Undergrad Degree', bg: 'bg-secondary-container', text: 'text-on-secondary-container' },
-  { icon: 'stethoscope', label: 'Specialization', sub: 'Post Graduation', bg: 'bg-primary', text: 'text-on-primary' },
-]
-
-const CATS = ['All Careers', 'STEM', 'Arts', 'Business']
+const CAT_KEY: Record<(typeof CAREER_CATEGORIES)[number], 'careers.all' | 'careers.stem' | 'careers.arts' | 'careers.business'> = {
+  'All Careers': 'careers.all',
+  STEM: 'careers.stem',
+  Arts: 'careers.arts',
+  Business: 'careers.business',
+}
 
 export default function Careers() {
-  const [activeCat, setActiveCat] = useState('All Careers')
+  const navigate = useNavigate()
+  const { t } = useLang()
+  const [activeCat, setActiveCat] = useState<(typeof CAREER_CATEGORIES)[number]>('All Careers')
   const [pathwayFor, setPathwayFor] = useState<string | null>(null)
+
+  const careers = useMemo(
+    () => (activeCat === 'All Careers' ? CAREERS : CAREERS.filter((c) => c.category === (activeCat as Category))),
+    [activeCat],
+  )
+
+  const active = pathwayFor ? careerByKey(pathwayFor) : null
 
   return (
     <div className="h-full overflow-y-auto custom-scrollbar p-4 md:p-margin-page">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 md:mb-12">
         <div className="max-w-2xl">
-          <h2 className="font-display text-3xl md:text-display text-on-surface mb-3">Explore Your Future</h2>
-          <p className="font-body-lg text-on-surface-variant">
-            Browse visual pathways to discover what it takes to reach your goals.
-          </p>
+          <h2 className="font-display text-3xl md:text-display text-on-surface mb-3">{t('careers.title')}</h2>
+          <p className="font-body-lg text-on-surface-variant">{t('careers.subtitle')}</p>
         </div>
-        <div className="flex p-1 bg-surface-container-low rounded-2xl">
-          {CATS.map((c) => (
+        <div className="flex p-1 bg-surface-container-low rounded-2xl flex-wrap">
+          {CAREER_CATEGORIES.map((c) => (
             <button
               key={c}
               onClick={() => setActiveCat(c)}
@@ -41,14 +47,14 @@ export default function Careers() {
                 c === activeCat ? 'bg-surface-container-lowest text-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'
               }`}
             >
-              {c}
+              {t(CAT_KEY[c])}
             </button>
           ))}
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {CAREERS.map((c) => (
+        {careers.map((c) => (
           <div
             key={c.key}
             onClick={() => setPathwayFor(c.key)}
@@ -57,24 +63,29 @@ export default function Careers() {
             <div className={`w-16 h-16 ${c.bg} rounded-2xl flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition-transform duration-300`}>
               {c.emoji}
             </div>
-            <h3 className="font-headline-md text-on-surface mb-3">{c.name}</h3>
+            <div className="flex items-center gap-2 mb-3">
+              <h3 className="font-headline-md text-on-surface">{c.name}</h3>
+              <span className="text-[9px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase tracking-wider">
+                {c.category}
+              </span>
+            </div>
             <p className="font-body-md text-on-surface-variant mb-8 flex-grow">{c.desc}</p>
             <div className="flex flex-wrap gap-2 mb-8">
-              {c.tags.map((t) => (
-                <span key={t} className="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
-                  {t}
+              {c.tags.map((tag) => (
+                <span key={tag} className="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                  {tag}
                 </span>
               ))}
             </div>
             <button className="w-full bg-primary text-on-primary py-4 rounded-2xl font-label-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
-              View Pathway <Icon name="arrow_forward" className="text-lg" />
+              {t('careers.viewPathway')} <Icon name="arrow_forward" className="text-lg" />
             </button>
           </div>
         ))}
       </div>
 
       {/* Pathway overlay */}
-      {pathwayFor && (
+      {active && (
         <div
           onClick={(e) => e.target === e.currentTarget && setPathwayFor(null)}
           className="fixed inset-0 z-[100] bg-on-background/40 backdrop-blur-md flex items-center justify-center p-4 md:p-6"
@@ -87,60 +98,96 @@ export default function Careers() {
               <Icon name="close" />
             </button>
             <div className="p-6 md:p-12">
-              <div className="flex items-center gap-4 md:gap-6 mb-10 md:mb-16">
-                <div className="text-5xl bg-surface-container-low p-5 rounded-[2rem] shadow-sm">
-                  {CAREERS.find((c) => c.key === pathwayFor)?.emoji}
-                </div>
+              <div className="flex items-center gap-4 md:gap-6 mb-10 md:mb-12">
+                <div className="text-5xl bg-surface-container-low p-5 rounded-[2rem] shadow-sm">{active.emoji}</div>
                 <div>
                   <span className="bg-primary/10 text-primary px-3 py-1 rounded-full uppercase tracking-widest text-[10px] font-bold">
-                    Career Roadmap
+                    {t('careers.roadmap')}
                   </span>
                   <h2 className="font-headline-lg text-on-surface mt-1">
-                    {CAREERS.find((c) => c.key === pathwayFor)?.name}: The Pathway
+                    {active.name}: {t('careers.pathwayTitle')}
                   </h2>
                 </div>
               </div>
-              {/* Flowchart */}
-              <div className="relative py-12 flex flex-wrap justify-between items-center gap-4">
-                {PATHWAY.map((n, i) => (
-                  <div key={i} className="relative flex flex-col items-center gap-4 min-w-[140px] flex-1">
-                    <div className={`w-20 h-20 ${n.bg} ${n.text} rounded-[1.75rem] shadow-lg flex items-center justify-center border-4 border-surface-bright`}>
-                      <Icon name={n.icon} className="text-3xl" />
-                    </div>
-                    <div className="text-center">
-                      <p className="font-label-md text-on-surface">{n.label}</p>
-                      <p className="text-[10px] text-on-surface-variant uppercase">{n.sub}</p>
-                    </div>
-                    {i < PATHWAY.length - 1 && (
-                      <div
-                        className="hidden md:block absolute top-10 right-[-2rem] w-16 h-1 z-0"
-                        style={{
-                          background:
-                            'repeating-linear-gradient(90deg, #ffb596 0px, #ffb596 8px, transparent 8px, transparent 16px)',
-                        }}
-                      />
-                    )}
+
+              {/* Key subjects + exams */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                <div className="bg-surface-container-low/50 rounded-2xl p-5 border border-outline-variant/30">
+                  <div className="flex items-center gap-2 mb-3 text-primary">
+                    <Icon name="menu_book" className="text-lg" />
+                    <span className="text-[11px] font-bold uppercase tracking-widest">{t('careers.keySubjects')}</span>
                   </div>
-                ))}
+                  <div className="flex flex-wrap gap-2">
+                    {active.keySubjects.map((s) => (
+                      <span key={s} className="bg-white border border-outline-variant/40 text-on-surface px-3 py-1 rounded-full text-xs font-semibold">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="bg-surface-container-low/50 rounded-2xl p-5 border border-outline-variant/30">
+                  <div className="flex items-center gap-2 mb-3 text-tertiary">
+                    <Icon name="edit_note" className="text-lg" />
+                    <span className="text-[11px] font-bold uppercase tracking-widest">{t('careers.topExams')}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {active.exams.map((e) => (
+                      <span key={e} className="bg-white border border-outline-variant/40 text-on-surface px-3 py-1 rounded-full text-xs font-semibold">
+                        {e}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="mt-10 md:mt-16 bg-surface-container-low/50 p-5 md:p-8 rounded-3xl md:rounded-[2rem] border border-outline-variant/30 flex flex-col sm:flex-row items-start gap-4 md:gap-6">
+
+              {/* Flowchart */}
+              <div className="relative py-6 flex flex-wrap justify-between items-start gap-4">
+                {active.pathway.map((n, i) => {
+                  const style = NODE_STYLES[i % NODE_STYLES.length]
+                  return (
+                    <div key={i} className="relative flex flex-col items-center gap-4 min-w-[140px] flex-1">
+                      <div className={`w-20 h-20 ${style.bg} ${style.text} rounded-[1.75rem] shadow-lg flex items-center justify-center border-4 border-surface-bright`}>
+                        <Icon name={n.icon} className="text-3xl" />
+                      </div>
+                      <div className="text-center">
+                        <p className="font-label-md text-on-surface">{n.label}</p>
+                        <p className="text-[10px] text-on-surface-variant uppercase">{n.sub}</p>
+                      </div>
+                      {i < active.pathway.length - 1 && (
+                        <div
+                          className="hidden md:block absolute top-10 right-[-2rem] w-16 h-1 z-0"
+                          style={{
+                            background:
+                              'repeating-linear-gradient(90deg, #ffb596 0px, #ffb596 8px, transparent 8px, transparent 16px)',
+                          }}
+                        />
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+
+              <div className="mt-10 md:mt-12 bg-surface-container-low/50 p-5 md:p-8 rounded-3xl md:rounded-[2rem] border border-outline-variant/30 flex flex-col sm:flex-row items-start gap-4 md:gap-6">
                 <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
                   <Icon name="lightbulb" className="text-primary text-3xl" />
                 </div>
                 <div>
-                  <h4 className="font-headline-md text-on-surface mb-2">Pro Tip from AI Buddy</h4>
+                  <h4 className="font-headline-md text-on-surface mb-2">{t('careers.proTipTitle')}</h4>
                   <p className="font-body-md text-on-surface-variant">
-                    Focus on the core subjects early. Want me to recommend a study plan and resources tailored to this pathway?
+                    {active.name}: focus on {active.keySubjects.join(', ')} early, and start preparing for {active.exams[0]}.
                   </p>
                   <div className="mt-6 flex gap-3">
-                    <button className="bg-primary text-on-primary px-8 py-2.5 rounded-xl font-label-md text-sm hover:brightness-110 transition-all">
-                      Show Resources
+                    <button
+                      onClick={() => navigate('/dashboard')}
+                      className="bg-primary text-on-primary px-8 py-2.5 rounded-xl font-label-md text-sm hover:brightness-110 transition-all"
+                    >
+                      {t('careers.showResources')}
                     </button>
                     <button
                       onClick={() => setPathwayFor(null)}
                       className="bg-surface-container-high text-on-surface-variant px-8 py-2.5 rounded-xl font-label-md text-sm hover:bg-surface-container-highest transition-colors"
                     >
-                      Dismiss
+                      {t('careers.dismiss')}
                     </button>
                   </div>
                 </div>

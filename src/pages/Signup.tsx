@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Icon from '../components/Icon'
+import { useAuth } from '../context/AuthContext'
+import { useLang } from '../context/LanguageContext'
 
 const MASCOT =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuAC5Yd4DFbvdyKFJbnnFnLzXryeZ55kta4X_RYraUy4TG18ZGDcajoJeBXP9vu5nPG7PWBQWn_M0C-OsdUX2jArER1wRfdMWH08tKhKs16cbUr-TA1Pzz5qSOl0ClbKMEgbu9hmK_7pZpJGW7gMpiWq3pb1OVI1i4POdnee__ujrtHNryaquW0Qh1nyGyDprN_5dTsT1reTHJjU6cZzEJ-y4664Kq1KjdLNVDkGN-_PNXcKhTXFPWww_93S2p-IgGsq7rwd3gVx4fAi'
@@ -10,11 +12,54 @@ const GOOGLE_ICON =
 
 export default function Signup() {
   const navigate = useNavigate()
+  const { signup, loginWithGoogle } = useAuth()
+  const { t } = useLang()
   const [showPwd, setShowPwd] = useState(false)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [agree, setAgree] = useState(false)
+  const [error, setError] = useState('')
+  const [busy, setBusy] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  function friendlyError(e: unknown): string {
+    const code = (e as { code?: string })?.code || ''
+    if (code.includes('email-already-in-use')) return 'That email is already registered. Try logging in.'
+    if (code.includes('weak-password')) return 'Password should be at least 6 characters.'
+    if (code.includes('invalid-email')) return 'Please enter a valid email address.'
+    if (code.includes('popup-closed')) return 'Google sign-up was cancelled.'
+    return (e as Error)?.message || 'Something went wrong. Please try again.'
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    navigate('/onboarding/class')
+    setError('')
+    if (!agree) {
+      setError('Please accept the Terms of Service to continue.')
+      return
+    }
+    setBusy(true)
+    try {
+      await signup(name.trim(), email.trim(), password)
+      navigate('/onboarding/class')
+    } catch (err) {
+      setError(friendlyError(err))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  async function handleGoogle() {
+    setError('')
+    setBusy(true)
+    try {
+      await loginWithGoogle()
+      navigate('/onboarding/class')
+    } catch (err) {
+      setError(friendlyError(err))
+    } finally {
+      setBusy(false)
+    }
   }
 
   return (
@@ -36,16 +81,6 @@ export default function Signup() {
           <p className="font-body-lg text-body-lg text-on-surface-variant">
             Join thousands of Super Learners exploring the future of education with their very own AI Study Buddy.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <div className="bg-surface-container-lowest shadow-[0_4px_20px_rgba(37,99,235,0.08)] px-4 py-2 rounded-xl border border-outline-variant/30 flex items-center gap-2">
-              <Icon name="workspace_premium" className="text-tertiary-container" filled />
-              <span className="font-label-md text-label-md">Gamified Learning</span>
-            </div>
-            <div className="bg-surface-container-lowest shadow-[0_4px_20px_rgba(37,99,235,0.08)] px-4 py-2 rounded-xl border border-outline-variant/30 flex items-center gap-2">
-              <Icon name="smart_toy" className="text-secondary" filled />
-              <span className="font-label-md text-label-md">24/7 AI Tutor</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -57,20 +92,30 @@ export default function Signup() {
           </Link>
         </div>
         <div className="w-full max-w-md">
-          <div className="mb-10 text-center lg:text-left">
-            <h2 className="font-headline-lg text-headline-lg lg:text-headline-xl text-on-surface mb-2">Create Account</h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">Ready to level up your skills today?</p>
+          <div className="mb-8 text-center lg:text-left">
+            <h2 className="font-headline-lg text-headline-lg lg:text-headline-xl text-on-surface mb-2">{t('auth.createAccountTitle')}</h2>
+            <p className="font-body-md text-body-md text-on-surface-variant">{t('auth.signupSubtitle')}</p>
           </div>
+
+          {error && (
+            <div className="mb-6 flex items-center gap-2 px-4 py-3 rounded-xl bg-error-container text-on-error-container text-sm">
+              <Icon name="error" className="text-lg" />
+              {error}
+            </div>
+          )}
 
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label className="font-label-md text-label-md text-on-surface-variant flex items-center gap-2" htmlFor="name">
                 <Icon name="person" className="text-primary text-[18px]" />
-                Full Name
+                {t('auth.fullName')}
               </label>
               <input
                 id="name"
                 type="text"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Alex Johnson"
                 className="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/50 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline"
               />
@@ -79,11 +124,14 @@ export default function Signup() {
             <div className="space-y-2">
               <label className="font-label-md text-label-md text-on-surface-variant flex items-center gap-2" htmlFor="contact">
                 <Icon name="alternate_email" className="text-primary text-[18px]" />
-                Email or Phone Number
+                {t('auth.email')}
               </label>
               <input
                 id="contact"
-                type="text"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="alex@school.com"
                 className="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/50 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline"
               />
@@ -92,12 +140,16 @@ export default function Signup() {
             <div className="space-y-2">
               <label className="font-label-md text-label-md text-on-surface-variant flex items-center gap-2" htmlFor="password">
                 <Icon name="lock" className="text-primary text-[18px]" />
-                Create Password
+                {t('auth.createPassword')}
               </label>
               <div className="relative">
                 <input
                   id="password"
                   type={showPwd ? 'text' : 'password'}
+                  required
+                  minLength={6}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   className="w-full px-4 py-3 bg-surface-container-low border border-outline-variant/50 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline"
                 />
@@ -112,43 +164,48 @@ export default function Signup() {
             </div>
 
             <div className="flex items-start gap-3 py-2">
-              <input id="terms" type="checkbox" className="w-5 h-5 mt-0.5 text-primary border-outline-variant/50 rounded-lg focus:ring-primary" />
+              <input
+                id="terms"
+                type="checkbox"
+                checked={agree}
+                onChange={(e) => setAgree(e.target.checked)}
+                className="w-5 h-5 mt-0.5 text-primary border-outline-variant/50 rounded-lg focus:ring-primary"
+              />
               <label className="font-body-md text-label-md text-on-surface-variant" htmlFor="terms">
-                I agree to the <a className="text-primary font-bold hover:underline" href="#">Terms of Service</a> and{' '}
-                <a className="text-primary font-bold hover:underline" href="#">Privacy Policy</a>.
+                {t('auth.agreeTerms')}
               </label>
             </div>
 
             <button
               type="submit"
-              className="w-full py-4 bg-primary text-on-primary rounded-xl font-label-md text-label-md uppercase tracking-widest btn-3d flex items-center justify-center gap-2"
+              disabled={busy}
+              className="w-full py-4 bg-primary text-on-primary rounded-xl font-label-md text-label-md uppercase tracking-widest btn-3d flex items-center justify-center gap-2 disabled:opacity-60"
             >
-              Create My Account
-              <Icon name="arrow_forward" />
+              {busy ? 'Please wait…' : t('auth.createMyAccount')}
+              {!busy && <Icon name="arrow_forward" />}
             </button>
 
-            <div className="relative py-4 flex items-center">
+            <div className="relative py-2 flex items-center">
               <div className="flex-grow border-t border-outline-variant/30" />
-              <span className="flex-shrink mx-4 font-label-sm text-label-sm text-outline uppercase tracking-widest">or sign up with</span>
+              <span className="flex-shrink mx-4 font-label-sm text-label-sm text-outline uppercase tracking-widest">{t('auth.orSignupWith')}</span>
               <div className="flex-grow border-t border-outline-variant/30" />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <button type="button" className="flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors font-label-md text-label-md">
-                <img alt="Google" src={GOOGLE_ICON} className="w-5 h-5" />
-                Google
-              </button>
-              <button type="button" className="flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors font-label-md text-label-md">
-                <Icon name="social_leaderboard" className="text-[#1877F2]" filled />
-                Facebook
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleGoogle}
+              disabled={busy}
+              className="w-full flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors font-label-md text-label-md disabled:opacity-60"
+            >
+              <img alt="Google" src={GOOGLE_ICON} className="w-5 h-5" />
+              {t('auth.google')}
+            </button>
 
-            <div className="text-center pt-4">
+            <div className="text-center pt-2">
               <p className="font-body-md text-body-md text-on-surface-variant">
-                Already have an account?{' '}
+                {t('auth.haveAccount')}{' '}
                 <Link to="/login" className="text-primary font-bold hover:underline ml-1">
-                  Login
+                  {t('auth.login')}
                 </Link>
               </p>
             </div>

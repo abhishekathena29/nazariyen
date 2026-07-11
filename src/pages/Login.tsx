@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Icon from '../components/Icon'
+import { useAuth } from '../context/AuthContext'
+import { useLang } from '../context/LanguageContext'
 
 const ILLO =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDOm5GEDhhVvN5X0nbDXKz-ReoGnFDAzzJwn_a3GKDZIn0Pma9N4C0nzXaZJUPvXxylcsDQoLSHq-BcqsM_nypb3uaT8S-fqGZb_9-ztsmUzqkKYLdZgOJwN5KAqteJJWAXr4hrCSzqQ9gRGTjem69oWrvgQsD0u4ZCAUhShHrkxSfp-49onHZoSWpeJHz14zBJfW-lx-_hT4FRL1i_lCoL6dmPlNer3Rw9O3_obD33z6WAW0Em0mRhLUClWh7UZ68NQ40caTfvWvQW'
@@ -10,11 +12,67 @@ const GOOGLE_ICON =
 
 export default function Login() {
   const navigate = useNavigate()
+  const { login, loginWithGoogle, resetPassword } = useAuth()
+  const { t, toggle, langLabel } = useLang()
   const [showPwd, setShowPwd] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [info, setInfo] = useState('')
+  const [busy, setBusy] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  function friendlyError(e: unknown): string {
+    const code = (e as { code?: string })?.code || ''
+    if (code.includes('invalid-credential') || code.includes('wrong-password') || code.includes('user-not-found'))
+      return 'Incorrect email or password.'
+    if (code.includes('invalid-email')) return 'Please enter a valid email address.'
+    if (code.includes('too-many-requests')) return 'Too many attempts. Please try again later.'
+    if (code.includes('popup-closed')) return 'Google sign-in was cancelled.'
+    return (e as Error)?.message || 'Something went wrong. Please try again.'
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    navigate('/dashboard')
+    setError('')
+    setInfo('')
+    setBusy(true)
+    try {
+      await login(email.trim(), password)
+      navigate('/dashboard')
+    } catch (err) {
+      setError(friendlyError(err))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  async function handleGoogle() {
+    setError('')
+    setInfo('')
+    setBusy(true)
+    try {
+      await loginWithGoogle()
+      navigate('/dashboard')
+    } catch (err) {
+      setError(friendlyError(err))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  async function handleForgot() {
+    setError('')
+    setInfo('')
+    if (!email.trim()) {
+      setInfo(t('auth.forgotPrompt'))
+      return
+    }
+    try {
+      await resetPassword(email.trim())
+      setInfo(t('auth.resetSent'))
+    } catch (err) {
+      setError(friendlyError(err))
+    }
   }
 
   return (
@@ -34,42 +92,61 @@ export default function Login() {
                 Your AI Buddy is waiting to help you ace your Class 10 journey. Join thousands of super learners today!
               </p>
             </div>
-            <div className="absolute top-20 right-10 animate-bounce">
-              <div className="bg-tertiary-fixed text-on-tertiary-fixed px-4 py-2 rounded-full shadow-lg flex items-center gap-2 border-b-2 border-tertiary-container">
-                <Icon name="stars" className="text-tertiary" filled />
-                <span className="font-label-md text-label-md">1,250 XP Today!</span>
-              </div>
-            </div>
           </div>
         </div>
 
         {/* Form */}
-        <div className="flex flex-col justify-center p-8 md:p-16 space-y-10">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg">
-              <Icon name="smart_toy" className="text-white text-3xl" />
-            </div>
-            <span className="font-headline-lg text-headline-lg font-black tracking-tight text-primary">Nazariyen</span>
-          </Link>
-          <div className="space-y-2">
-            <h2 className="font-headline-md text-headline-md text-on-surface">Welcome Back!</h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">Log in to continue your learning quest.</p>
+        <div className="flex flex-col justify-center p-8 md:p-16 space-y-8">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg">
+                <Icon name="smart_toy" className="text-white text-3xl" />
+              </div>
+              <span className="font-headline-lg text-headline-lg font-black tracking-tight text-primary">Nazariyen</span>
+            </Link>
+            <button
+              onClick={toggle}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors"
+            >
+              <Icon name="language" className="text-on-surface-variant text-lg" />
+              <span className="font-label-md text-sm text-on-surface">{langLabel}</span>
+            </button>
           </div>
+          <div className="space-y-2">
+            <h2 className="font-headline-md text-headline-md text-on-surface">{t('auth.welcomeBack')}</h2>
+            <p className="font-body-md text-body-md text-on-surface-variant">{t('auth.loginSubtitle')}</p>
+          </div>
+
+          {error && (
+            <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-error-container text-on-error-container text-sm">
+              <Icon name="error" className="text-lg" />
+              {error}
+            </div>
+          )}
+          {info && (
+            <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-primary/5 text-primary text-sm">
+              <Icon name="info" className="text-lg" />
+              {info}
+            </div>
+          )}
 
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label className="font-label-md text-label-md text-on-surface-variant ml-1" htmlFor="identifier">
-                Email or Phone Number
+                {t('auth.email')}
               </label>
               <div className="relative group">
                 <Icon
-                  name="person"
+                  name="mail"
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors"
                 />
                 <input
                   id="identifier"
-                  type="text"
-                  placeholder="Enter your email or phone"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t('auth.emailPlaceholder')}
                   className="w-full pl-12 pr-4 py-4 bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-surface-container-lowest rounded-2xl outline-none transition-all font-body-md text-body-md text-on-surface"
                 />
               </div>
@@ -77,8 +154,10 @@ export default function Login() {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center px-1">
-                <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="password">Password</label>
-                <a className="font-label-md text-label-md text-primary hover:underline" href="#">Forgot Password?</a>
+                <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="password">{t('auth.password')}</label>
+                <button type="button" onClick={handleForgot} className="font-label-md text-label-md text-primary hover:underline">
+                  {t('auth.forgotPassword')}
+                </button>
               </div>
               <div className="relative group">
                 <Icon
@@ -88,6 +167,9 @@ export default function Login() {
                 <input
                   id="password"
                   type={showPwd ? 'text' : 'password'}
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   className="w-full pl-12 pr-12 py-4 bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-surface-container-lowest rounded-2xl outline-none transition-all font-body-md text-body-md text-on-surface"
                 />
@@ -103,34 +185,33 @@ export default function Login() {
 
             <button
               type="submit"
-              className="w-full py-4 bg-primary text-white rounded-2xl font-label-md text-label-md btn-3d shadow-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2"
+              disabled={busy}
+              className="w-full py-4 bg-primary text-white rounded-2xl font-label-md text-label-md btn-3d shadow-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2 disabled:opacity-60"
             >
-              Log In
-              <Icon name="arrow_forward" className="text-sm" />
+              {busy ? 'Please wait…' : t('auth.login')}
+              {!busy && <Icon name="arrow_forward" className="text-sm" />}
             </button>
           </form>
 
           <div className="relative flex items-center gap-4">
             <div className="flex-grow h-px bg-outline-variant" />
-            <span className="font-label-sm text-label-sm text-outline uppercase tracking-wider">or continue with</span>
+            <span className="font-label-sm text-label-sm text-outline uppercase tracking-wider">{t('auth.orContinue')}</span>
             <div className="flex-grow h-px bg-outline-variant" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <button className="flex items-center justify-center gap-3 py-3 px-6 rounded-2xl bg-surface-container-lowest border-2 border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all duration-300 group">
-              <img alt="Google" src={GOOGLE_ICON} className="w-5 h-5" />
-              <span className="font-label-md text-label-md text-on-surface-variant group-hover:text-primary">Google</span>
-            </button>
-            <button className="flex items-center justify-center gap-3 py-3 px-6 rounded-2xl bg-surface-container-lowest border-2 border-outline-variant hover:border-secondary hover:bg-surface-container-low transition-all duration-300 group">
-              <Icon name="smartphone" className="text-outline group-hover:text-secondary" />
-              <span className="font-label-md text-label-md text-on-surface-variant group-hover:text-secondary">Phone OTP</span>
-            </button>
-          </div>
+          <button
+            onClick={handleGoogle}
+            disabled={busy}
+            className="w-full flex items-center justify-center gap-3 py-3 px-6 rounded-2xl bg-surface-container-lowest border-2 border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all duration-300 group disabled:opacity-60"
+          >
+            <img alt="Google" src={GOOGLE_ICON} className="w-5 h-5" />
+            <span className="font-label-md text-label-md text-on-surface-variant group-hover:text-primary">{t('auth.google')}</span>
+          </button>
 
           <p className="text-center font-body-md text-body-md text-on-surface-variant">
-            New to Nazariyen?{' '}
+            {t('auth.newHere')}{' '}
             <Link to="/signup" className="text-primary font-bold hover:underline">
-              Create an Account
+              {t('auth.createAccount')}
             </Link>
           </p>
         </div>

@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+# Nazariyen — AI Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A gamified NCERT learning app with an AI Study Buddy (Groq), Firebase auth +
+Firestore, a full NCERT library with official links, career pathways, bookmarks,
+and a bilingual **English / हिंदी** interface.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **AI Study Buddy** — real streaming answers via the Groq API, pitched to the
+  student's class. Replies in **Hindi** when the UI language is Hindi.
+- **Firebase Auth** — Email/Password + Google sign-in only.
+- **Firestore user data** — profile, XP, streak, recently-read and bookmarks are
+  persisted per user (`users/{uid}` + `recent` / `bookmarks` subcollections).
+- **NCERT Library** — real textbooks for classes 6–12 with descriptions, details,
+  and official **“Open on NCERT”** links; functional bookmarks & recently-read.
+- **Career Pathways** — accurate, domain-specific roadmaps (subjects, entrance
+  exams, step-by-step path) for Doctor, Developer, AI, Pilot, Designer, Lawyer,
+  IAS, CA, Entrepreneur, and more.
+- **Bilingual** — toggle English ⇄ हिंदी anywhere; the choice persists.
 
-## React Compiler
+> **Runs out of the box in "local mode"** (localStorage-backed) so you can click
+> through everything immediately. Add real credentials in `.env` to activate
+> cloud auth/Firestore and the AI Buddy.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setup
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+cp .env.example .env      # already created for you; fill in the values
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 1. Groq API (AI Study Buddy)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Get a free key at <https://console.groq.com/keys>.
+2. Set `VITE_GROQ_API_KEY` in `.env`.
+   (Optional: change `VITE_GROQ_MODEL`, default `llama-3.3-70b-versatile`.)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Firebase (Auth + Firestore)
+
+1. Create a project at <https://console.firebase.google.com>.
+2. **Authentication → Sign-in method:** enable **Email/Password** and **Google**.
+3. **Firestore Database:** create a database (production or test mode).
+4. **Project settings → Your apps → Web app** → copy the config into the
+   `VITE_FIREBASE_*` variables in `.env`.
+
+Suggested Firestore security rules (each user only touches their own data):
+
 ```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+      match /{sub=**} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+      }
+    }
+  }
+}
+```
+
+Restart `npm run dev` after editing `.env`.
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Type-check + production build |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run ESLint |
+
+## Tech
+
+React 19 · TypeScript · Vite · React Router · Firebase · Groq · Tailwind (CDN).
+
+## Notes on secrets
+
+This is a frontend-only app, so `VITE_*` values are bundled into the browser
+build. Firebase web config is designed to be public (guarded by security rules).
+The Groq key, however, is exposed to the client — fine for local/demo use, but
+for production route AI calls through a small backend/proxy that holds the key.
+`.env` is git-ignored.

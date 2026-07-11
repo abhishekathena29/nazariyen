@@ -10,6 +10,7 @@ import StudyBuddy from './pages/StudyBuddy'
 import Library from './pages/Library'
 import PdfReader from './pages/PdfReader'
 import Careers from './pages/Careers'
+import RequireAuth from './components/RequireAuth'
 
 export default function App() {
   return (
@@ -18,17 +19,17 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
 
-      <Route path="/onboarding/class" element={<SelectClass />} />
-      <Route path="/onboarding/interests" element={<Interests />} />
-      <Route path="/onboarding/buddy" element={<MeetBuddy />} />
+      <Route path="/onboarding/class" element={<RequireAuth><SelectClass /></RequireAuth>} />
+      <Route path="/onboarding/interests" element={<RequireAuth><Interests /></RequireAuth>} />
+      <Route path="/onboarding/buddy" element={<RequireAuth><MeetBuddy /></RequireAuth>} />
 
-      <Route element={<DashboardLayout />}>
+      <Route element={<RequireAuth><DashboardLayout /></RequireAuth>}>
         <Route path="/dashboard" element={<StudyBuddy />} />
         <Route path="/library" element={<Library />} />
         <Route path="/careers" element={<Careers />} />
       </Route>
 
-      <Route path="/library/reader" element={<PdfReader />} />
+      <Route path="/library/reader" element={<RequireAuth><PdfReader /></RequireAuth>} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

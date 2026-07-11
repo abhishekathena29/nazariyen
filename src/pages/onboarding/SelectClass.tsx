@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Icon from '../../components/Icon'
+import { useAuth } from '../../context/AuthContext'
 
 const CLASSES = [
   { id: 1, label: 'Class 1', icon: 'child_care', desc: 'Primary' },
@@ -19,7 +20,14 @@ const CLASSES = [
 
 export default function SelectClass() {
   const navigate = useNavigate()
+  const { saveProfile } = useAuth()
   const [selected, setSelected] = useState<number | null>(null)
+
+  async function handleNext() {
+    if (selected === null) return
+    await saveProfile({ classLevel: `Class ${selected}` })
+    navigate('/onboarding/interests')
+  }
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-start bg-pattern-dots pb-32 bg-surface">
@@ -84,7 +92,7 @@ export default function SelectClass() {
           </button>
           <button
             disabled={selected === null}
-            onClick={() => navigate('/onboarding/interests')}
+            onClick={handleNext}
             className={`bg-primary text-on-primary font-label-md text-label-md px-10 py-4 rounded-full shadow-lg flex items-center gap-3 active:scale-95 transition-all hover:bg-primary-container duration-300 border-b-[3px] border-primary/40 ${
               selected === null ? 'opacity-50 cursor-not-allowed' : ''
             }`}
