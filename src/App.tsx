@@ -10,6 +10,7 @@ import StudyBuddy from './pages/StudyBuddy'
 import Library from './pages/Library'
 import PdfReader from './pages/PdfReader'
 import Careers from './pages/Careers'
+import Quiz from './pages/Quiz'
 import RequireAuth from './components/RequireAuth'
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/dashboard" element={<StudyBuddy />} />
         <Route path="/library" element={<Library />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path="/quiz" element={<Quiz />} />
       </Route>
 
       <Route path="/library/reader" element={<RequireAuth><PdfReader /></RequireAuth>} />

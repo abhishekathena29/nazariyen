@@ -111,7 +111,7 @@ export default function Careers() {
               </div>
 
               {/* Key subjects + exams */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div className="bg-surface-container-low/50 rounded-2xl p-5 border border-outline-variant/30">
                   <div className="flex items-center gap-2 mb-3 text-primary">
                     <Icon name="menu_book" className="text-lg" />
@@ -137,6 +137,31 @@ export default function Careers() {
                       </span>
                     ))}
                   </div>
+                </div>
+              </div>
+
+              {/* Education + salary + outlook */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                <div className="bg-surface-container-low/50 rounded-2xl p-5 border border-outline-variant/30">
+                  <div className="flex items-center gap-2 mb-2 text-secondary">
+                    <Icon name="school" className="text-lg" />
+                    <span className="text-[11px] font-bold uppercase tracking-widest">{t('careers.education')}</span>
+                  </div>
+                  <p className="text-xs text-on-surface-variant leading-relaxed">{active.education}</p>
+                </div>
+                <div className="bg-surface-container-low/50 rounded-2xl p-5 border border-outline-variant/30">
+                  <div className="flex items-center gap-2 mb-2 text-primary">
+                    <Icon name="payments" className="text-lg" />
+                    <span className="text-[11px] font-bold uppercase tracking-widest">{t('careers.avgSalary')}</span>
+                  </div>
+                  <p className="text-xs text-on-surface-variant leading-relaxed">{active.avgSalary}</p>
+                </div>
+                <div className="bg-surface-container-low/50 rounded-2xl p-5 border border-outline-variant/30">
+                  <div className="flex items-center gap-2 mb-2 text-tertiary">
+                    <Icon name="trending_up" className="text-lg" />
+                    <span className="text-[11px] font-bold uppercase tracking-widest">{t('careers.outlook')}</span>
+                  </div>
+                  <p className="text-xs text-on-surface-variant leading-relaxed">{active.outlook}</p>
                 </div>
               </div>
 

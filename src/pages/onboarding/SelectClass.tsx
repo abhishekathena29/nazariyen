@@ -45,7 +45,7 @@ export default function SelectClass() {
 
       <div className="text-center mt-12 mb-16 px-margin-mobile">
         <h1 className="font-headline-xl text-headline-xl text-on-surface mb-4 tracking-tight">
-          Welcome to <span className="text-primary">Nazariyen!</span>
+          Welcome to <span className="text-primary">Wiseup!</span>
         </h1>
         <p className="font-body-lg text-body-lg text-on-surface-variant max-w-[500px] mx-auto">
           Let's get to know you. Which class are you currently in?
@@ -60,7 +60,7 @@ export default function SelectClass() {
               <button
                 key={c.id}
                 onClick={() => setSelected(c.id)}
-                className={`relative bg-surface-container-lowest p-6 rounded-xl border-2 shadow-[0_4px_20px_rgba(37,99,235,0.06)] hover:shadow-lg flex flex-col items-center justify-center text-center transition-all duration-300 group ${
+                className={`relative bg-surface-container-lowest p-6 rounded-xl border-2 transition-all duration-300 group ${
                   isSel ? 'border-primary bg-surface-container-low -translate-y-1' : 'border-outline-variant/30 hover:border-primary/40'
                 }`}
               >
@@ -93,7 +93,7 @@ export default function SelectClass() {
           <button
             disabled={selected === null}
             onClick={handleNext}
-            className={`bg-primary text-on-primary font-label-md text-label-md px-10 py-4 rounded-full shadow-lg flex items-center gap-3 active:scale-95 transition-all hover:bg-primary-container duration-300 border-b-[3px] border-primary/40 ${
+            className={`bg-primary text-on-primary font-label-md text-label-md px-10 py-4 rounded-full btn-3d flex items-center gap-3 transition-all hover:bg-primary-container duration-300 ${
               selected === null ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >

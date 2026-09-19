@@ -1,4 +1,4 @@
-# Nazariyen — AI Learning Platform
+# Wiseup — AI Learning Platform
 
 A gamified NCERT learning app with an AI Study Buddy (Groq), Firebase auth +
 Firestore, a full NCERT library with official links, career pathways, bookmarks,

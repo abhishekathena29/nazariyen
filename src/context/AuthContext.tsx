@@ -45,7 +45,7 @@ type AuthCtx = {
 }
 
 const Ctx = createContext<AuthCtx | null>(null)
-const LOCAL_USER_KEY = 'nazariyen.localUser'
+const LOCAL_USER_KEY = 'wiseup.localUser'
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null)
@@ -160,7 +160,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       await signInWithPopup(auth, googleProvider)
     } else {
       const uid = 'local-google-demo'
-      await startLocalSession({ uid, email: 'demo@nazariyen.app', displayName: 'Demo Learner' })
+      await startLocalSession({ uid, email: 'demo@wiseup.app', displayName: 'Demo Learner' })
     }
   }, [startLocalSession])
 

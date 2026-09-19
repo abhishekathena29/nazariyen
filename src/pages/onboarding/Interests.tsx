@@ -43,7 +43,7 @@ export default function Interests() {
       {/* Top progress */}
       <div className="fixed top-0 left-0 w-full h-2 bg-surface-container-high z-50">
         <div
-          className="h-full bg-secondary-fixed shadow-[0_0_12px_rgba(78,222,163,0.5)] transition-all duration-700 ease-out relative"
+          className="h-full bg-secondary-fixed shadow-none transition-all duration-700 ease-out relative"
           style={{ width: '66%' }}
         >
           <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-white rounded-full border-2 border-secondary flex items-center justify-center">
@@ -57,8 +57,7 @@ export default function Interests() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
             {/* Left card */}
             <div className="lg:col-span-5 hidden lg:flex flex-col gap-2">
-              <div className="bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(37,99,235,0.08)] border border-outline-variant/30 relative overflow-hidden group">
-                <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
+              <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-outline-variant/30 relative overflow-hidden group">
                 <div className="relative z-10">
                   <div className="w-16 h-16 bg-surface-container-low rounded-2xl flex items-center justify-center mb-6 border border-primary/10">
                     <Icon name="smart_toy" className="text-primary text-4xl" filled />

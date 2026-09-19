@@ -119,7 +119,7 @@ export default function PdfReader() {
       <header className="bg-white/80 backdrop-blur-md border-b border-outline-variant/30 z-40 flex justify-between items-center w-full px-4 md:px-margin-page py-3 h-16">
         <div className="flex items-center gap-8">
           <Link to="/" className="font-headline-lg text-2xl font-extrabold tracking-tight text-primary">
-            Nazariyen
+            Wiseup
           </Link>
           <nav className="hidden md:flex gap-8">
             <Link to="/dashboard" className="text-on-surface-variant font-medium hover:text-primary transition-colors">

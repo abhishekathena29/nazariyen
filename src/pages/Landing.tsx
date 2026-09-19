@@ -35,10 +35,10 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-surface">
       {/* Top Nav */}
-      <header className="bg-surface/90 backdrop-blur-md fixed top-0 z-40 w-full border-b border-outline-variant/30 shadow-[0_4px_20px_rgba(37,99,235,0.08)]">
+      <header className="bg-surface/90 backdrop-blur-md fixed top-0 z-40 w-full border-b border-outline-variant/30 shadow-sm">
         <div className="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
           <Link to="/" className="font-headline-lg text-headline-lg font-black tracking-tight text-primary">
-            Nazariyen
+            Wiseup
           </Link>
           <nav className="hidden md:flex items-center gap-gutter">
             <a className="text-on-surface-variant font-medium hover:text-primary transition-all" href="#features">Features</a>
@@ -53,7 +53,7 @@ export default function Landing() {
             </div>
             <button
               onClick={() => navigate('/signup')}
-              className="bg-primary text-on-primary font-label-md px-6 py-2 rounded-full btn-3d shadow-lg"
+              className="bg-primary text-on-primary font-label-md px-6 py-2 rounded-full btn-3d hover:bg-primary-container transition-colors"
             >
               Get Started
             </button>
@@ -66,7 +66,7 @@ export default function Landing() {
         <section className="relative overflow-hidden px-margin-mobile md:px-margin-desktop py-16 md:py-24">
           <div className="max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 text-center md:text-left z-10">
-              <div className="inline-flex items-center gap-2 bg-secondary-container/30 text-on-secondary-container px-4 py-2 rounded-full mb-6 animate-bounce">
+              <div className="inline-flex items-center gap-2 bg-secondary-container/30 text-on-secondary-container px-4 py-2 rounded-full mb-6">
                 <Icon name="auto_awesome" className="text-[20px]" filled />
                 <span className="font-label-sm uppercase tracking-wider">AI-Powered Learning for NCERT</span>
               </div>
@@ -74,13 +74,13 @@ export default function Landing() {
                 Your Personalized Path to <span className="text-primary italic">Mastery</span>
               </h1>
               <p className="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
-                Unlock your potential with Nazariyen. From interactive NCERT resources to your very own AI Study Buddy, we
+                Unlock your potential with Wiseup. From interactive NCERT resources to your very own AI Study Buddy, we
                 provide everything you need to excel in your K-12 journey.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <button
                   onClick={() => navigate('/signup')}
-                  className="bg-primary text-on-primary font-label-md px-8 py-4 rounded-xl btn-3d shadow-xl flex items-center justify-center gap-2 text-lg"
+                  className="bg-primary text-on-primary font-label-md px-8 py-4 rounded-xl btn-3d hover:bg-primary-container transition-colors flex items-center justify-center gap-2 text-lg"
                 >
                   Start Learning Adventure
                   <Icon name="arrow_forward" />
@@ -93,12 +93,10 @@ export default function Landing() {
             </div>
             <div className="flex-1 relative">
               <div className="relative w-full aspect-square max-w-[500px] mx-auto">
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary-container rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
-                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-container rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
                 <img
                   alt="Happy student"
                   src={HERO_IMG}
-                  className="w-full h-full object-cover rounded-3xl shadow-2xl relative z-10 border-8 border-white"
+                  className="w-full h-full object-cover rounded-3xl shadow-sm relative z-10 border-4 border-white"
                 />
                 <div className="absolute top-10 -right-6 z-20 glass-card p-4 rounded-2xl shadow-lg animate-float">
                   <div className="flex items-center gap-3">
@@ -133,13 +131,13 @@ export default function Landing() {
         <section id="features" className="px-margin-mobile md:px-margin-desktop py-20 bg-surface-container-low/50">
           <div className="max-w-container-max mx-auto">
             <div className="text-center mb-16">
-              <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4">Why Students Love Nazariyen</h2>
+              <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4">Why Students Love Wiseup</h2>
               <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
                 We've built a holistic ecosystem that supports every aspect of your learning, from daily doubts to long-term career goals.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-              <div className="md:col-span-8 bg-white rounded-3xl p-8 shadow-[0_4px_20px_rgba(37,99,235,0.08)] flex flex-col md:flex-row gap-8 overflow-hidden group hover:shadow-xl transition-all duration-300">
+              <div className="md:col-span-8 bg-white rounded-3xl p-8 shadow-sm flex flex-col md:flex-row gap-8 overflow-hidden group hover:shadow-xl transition-all duration-300">
                 <div className="flex-1">
                   <div className="w-14 h-14 bg-primary-container/10 rounded-2xl flex items-center justify-center text-primary mb-6">
                     <Icon name="smart_toy" className="text-[32px]" />
@@ -166,7 +164,7 @@ export default function Landing() {
                 </div>
               </div>
 
-              <div className="md:col-span-4 bg-tertiary-fixed rounded-3xl p-8 shadow-[0_4px_20px_rgba(37,99,235,0.08)] group hover:scale-[1.02] transition-all">
+              <div className="md:col-span-4 bg-tertiary-fixed rounded-3xl p-8 shadow-sm group hover:-translate-y-1 transition-transform">
                 <div className="w-14 h-14 bg-on-tertiary-fixed/10 rounded-2xl flex items-center justify-center text-on-tertiary-fixed mb-6">
                   <Icon name="workspace_premium" className="text-[32px]" />
                 </div>
@@ -184,7 +182,7 @@ export default function Landing() {
                 <p className="text-right font-label-sm text-on-tertiary-fixed">75% to Next Level</p>
               </div>
 
-              <div className="md:col-span-5 bg-surface-container-highest rounded-3xl p-8 shadow-[0_4px_20px_rgba(37,99,235,0.08)] flex flex-col justify-between group hover:-translate-y-2 transition-all">
+              <div className="md:col-span-5 bg-surface-container-highest rounded-3xl p-8 shadow-sm flex flex-col justify-between group hover:-translate-y-1 transition-transform">
                 <div>
                   <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6">
                     <Icon name="library_books" className="text-[32px]" />
@@ -208,7 +206,7 @@ export default function Landing() {
                 </div>
               </div>
 
-              <div className="md:col-span-7 bg-inverse-surface text-white rounded-3xl p-8 shadow-[0_4px_20px_rgba(37,99,235,0.08)] relative overflow-hidden group">
+              <div className="md:col-span-7 bg-inverse-surface text-white rounded-3xl p-8 shadow-sm relative overflow-hidden group">
                 <div className="relative z-10">
                   <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-6">
                     <Icon name="route" className="text-[32px]" />
@@ -235,7 +233,7 @@ export default function Landing() {
               <div>
                 <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4">Inspiring Success</h2>
                 <p className="font-body-md text-body-md text-on-surface-variant max-w-lg">
-                  Join thousands of students who have transformed their learning experience with Nazariyen.
+                  Join thousands of students who have transformed their learning experience with Wiseup.
                 </p>
               </div>
             </div>
@@ -243,7 +241,7 @@ export default function Landing() {
               {TESTIMONIALS.map((t) => (
                 <div
                   key={t.name}
-                  className={`bg-white p-8 rounded-3xl shadow-[0_4px_20px_rgba(37,99,235,0.06)] border border-outline-variant/20 hover:border-primary/30 transition-all ${
+                  className={`bg-white p-8 rounded-3xl shadow-sm border border-outline-variant/20 hover:border-primary/30 transition-all ${
                     t.featured ? 'md:scale-105 border-primary/20 z-10' : ''
                   }`}
                 >
@@ -268,17 +266,15 @@ export default function Landing() {
 
         {/* CTA */}
         <section className="px-margin-mobile md:px-margin-desktop py-24">
-          <div className="max-w-container-max mx-auto relative overflow-hidden bg-primary rounded-[40px] p-12 md:p-24 text-center">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full -ml-32 -mb-32 blur-3xl" />
+          <div className="max-w-container-max mx-auto relative overflow-hidden bg-primary rounded-[2rem] p-12 md:p-24 text-center">
             <div className="relative z-10">
               <h2 className="font-headline-xl text-headline-xl text-on-primary mb-6">Ready to Master Your Future?</h2>
               <p className="font-body-lg text-body-lg text-on-primary/80 mb-12 max-w-2xl mx-auto">
-                Join Nazariyen today and experience the future of personalized education. Your AI Buddy is waiting to help you ace your next big test!
+                Join Wiseup today and experience the future of personalized education. Your AI Buddy is waiting to help you ace your next big test!
               </p>
               <button
                 onClick={() => navigate('/signup')}
-                className="bg-white text-primary font-headline-md px-10 py-5 rounded-2xl shadow-2xl hover:scale-105 transition-transform"
+                className="bg-white text-primary font-headline-md px-10 py-5 rounded-2xl shadow-sm hover:opacity-90 transition-opacity"
               >
                 Start Your Learning Adventure
               </button>
@@ -294,7 +290,7 @@ export default function Landing() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div>
               <span className="font-headline-lg text-headline-lg font-black tracking-tight text-primary mb-4 block">
-                Nazariyen
+                Wiseup
               </span>
               <p className="font-body-md text-on-surface-variant mb-6">
                 Empowering the next generation of thinkers, creators, and leaders through AI-powered education.
@@ -326,7 +322,7 @@ export default function Landing() {
             </div>
           </div>
           <div className="pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant text-sm">
-            <p>© 2026 Nazariyen Education Tech. All rights reserved.</p>
+            <p>© 2026 Wiseup Education Tech. All rights reserved.</p>
             <div className="flex gap-8 items-center">
               <span>English (IN)</span>
               <div className="flex items-center gap-2">

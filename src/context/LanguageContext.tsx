@@ -11,7 +11,7 @@ type LanguageCtx = {
 
 const Ctx = createContext<LanguageCtx | null>(null)
 
-const STORAGE_KEY = 'nazariyen.lang'
+const STORAGE_KEY = 'wiseup.lang'
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Lang>(() => {

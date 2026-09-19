@@ -11,6 +11,7 @@ const FALLBACK_AVATAR =
 const NAV: { to: string; key: StringKey; icon: string }[] = [
   { to: '/dashboard', key: 'nav.studyBuddy', icon: 'smart_toy' },
   { to: '/library', key: 'nav.library', icon: 'library_books' },
+  { to: '/quiz', key: 'nav.quiz', icon: 'quiz' },
   { to: '/careers', key: 'nav.careers', icon: 'route' },
 ]
 
@@ -44,11 +45,11 @@ export default function DashboardLayout() {
         }}
         className="flex items-center gap-3 px-2"
       >
-        <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-on-primary shadow-lg shadow-primary/20">
+        <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-on-primary">
           <Icon name="auto_stories" />
         </div>
         <div className="text-left">
-          <h1 className="font-headline-md font-extrabold text-primary leading-tight">Nazariyen</h1>
+          <h1 className="font-headline-md font-extrabold text-primary leading-tight">Wiseup</h1>
           <p className="font-metadata text-metadata text-on-surface-variant/70">
             {classLevel} • {t('shell.superLearner')}
           </p>

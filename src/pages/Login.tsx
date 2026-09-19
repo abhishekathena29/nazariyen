@@ -3,12 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import Icon from '../components/Icon'
 import { useAuth } from '../context/AuthContext'
 import { useLang } from '../context/LanguageContext'
+import googleIcon from '../assets/google.png'
 
 const ILLO =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuDOm5GEDhhVvN5X0nbDXKz-ReoGnFDAzzJwn_a3GKDZIn0Pma9N4C0nzXaZJUPvXxylcsDQoLSHq-BcqsM_nypb3uaT8S-fqGZb_9-ztsmUzqkKYLdZgOJwN5KAqteJJWAXr4hrCSzqQ9gRGTjem69oWrvgQsD0u4ZCAUhShHrkxSfp-49onHZoSWpeJHz14zBJfW-lx-_hT4FRL1i_lCoL6dmPlNer3Rw9O3_obD33z6WAW0Em0mRhLUClWh7UZ68NQ40caTfvWvQW'
-
-const GOOGLE_ICON =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuC5-yyonhrZ0GldwRXEbgfdcMh3fHR5kC2hXC8KezXZ2GoT2XI-kaBgjNeGqUqwwcNg8Uph0dLpJ3jgJzlhwYT-IHg4uK3v2qwV19VOs5cP7IUeEqSN0qF0IGGJxqPjICNBez4e1MLJE_PPStSyWAC0vWx8gZGUTzKXr4DsNNZCk63mHkB2ZcLI1oRf0OcX3kUufjnIeKeG4wjqIu0qVOKvVyKQP5Gs_BkltHJEkPnsjY06mNhEDvG6LTxXrP9znQcaFFYUrPgWZl8E'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -80,11 +78,9 @@ export default function Login() {
       <main className="w-full min-h-screen grid grid-cols-1 md:grid-cols-2 bg-surface-container-lowest overflow-hidden">
         {/* Illustration */}
         <div className="hidden md:flex flex-col justify-center items-center p-12 bg-primary-container relative overflow-hidden">
-          <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-secondary-container opacity-20 rounded-full blur-3xl" />
-          <div className="absolute bottom-[-5%] left-[-5%] w-80 h-80 bg-tertiary-fixed-dim opacity-10 rounded-full blur-3xl" />
           <div className="relative z-10 text-center space-y-8">
             <div className="bg-surface-container-lowest/20 backdrop-blur-md p-8 rounded-[2rem] border border-white/20">
-              <img alt="Nazariyen Learning" src={ILLO} className="w-full h-auto rounded-2xl shadow-2xl" />
+              <img alt="Wiseup Learning" src={ILLO} className="w-full h-auto rounded-2xl shadow-sm" />
             </div>
             <div className="space-y-4">
               <h1 className="font-headline-lg text-headline-lg text-on-primary-container">Learn Smarter, Not Harder</h1>
@@ -99,10 +95,10 @@ export default function Login() {
         <div className="flex flex-col justify-center p-8 md:p-16 space-y-8">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg">
+              <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
                 <Icon name="smart_toy" className="text-white text-3xl" />
               </div>
-              <span className="font-headline-lg text-headline-lg font-black tracking-tight text-primary">Nazariyen</span>
+              <span className="font-headline-lg text-headline-lg font-black tracking-tight text-primary">Wiseup</span>
             </Link>
             <button
               onClick={toggle}
@@ -186,7 +182,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={busy}
-              className="w-full py-4 bg-primary text-white rounded-2xl font-label-md text-label-md btn-3d shadow-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2 disabled:opacity-60"
+              className="w-full py-4 bg-primary text-white rounded-2xl font-label-md text-label-md btn-3d hover:bg-primary-container transition-all flex items-center justify-center gap-2 disabled:opacity-60"
             >
               {busy ? 'Please wait…' : t('auth.login')}
               {!busy && <Icon name="arrow_forward" className="text-sm" />}
@@ -204,7 +200,7 @@ export default function Login() {
             disabled={busy}
             className="w-full flex items-center justify-center gap-3 py-3 px-6 rounded-2xl bg-surface-container-lowest border-2 border-outline-variant hover:border-primary hover:bg-surface-container-low transition-all duration-300 group disabled:opacity-60"
           >
-            <img alt="Google" src={GOOGLE_ICON} className="w-5 h-5" />
+            <img alt="Google" src={googleIcon} className="w-5 h-5" />
             <span className="font-label-md text-label-md text-on-surface-variant group-hover:text-primary">{t('auth.google')}</span>
           </button>
 

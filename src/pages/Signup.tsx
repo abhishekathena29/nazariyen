@@ -3,12 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import Icon from '../components/Icon'
 import { useAuth } from '../context/AuthContext'
 import { useLang } from '../context/LanguageContext'
+import googleIcon from '../assets/google.png'
 
 const MASCOT =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuAC5Yd4DFbvdyKFJbnnFnLzXryeZ55kta4X_RYraUy4TG18ZGDcajoJeBXP9vu5nPG7PWBQWn_M0C-OsdUX2jArER1wRfdMWH08tKhKs16cbUr-TA1Pzz5qSOl0ClbKMEgbu9hmK_7pZpJGW7gMpiWq3pb1OVI1i4POdnee__ujrtHNryaquW0Qh1nyGyDprN_5dTsT1reTHJjU6cZzEJ-y4664Kq1KjdLNVDkGN-_PNXcKhTXFPWww_93S2p-IgGsq7rwd3gVx4fAi'
-
-const GOOGLE_ICON =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuCRQy0ZZlPLe8JZs7JrLtJW2XGYRJOQhve9QXktVO9GaQQ-L5tEDk8r-z_WbPQzxzJiGe10iArdZtkE79lz8thEkeBY3Zm8GZRzAx_kyeEnfImnVX85GdtyyYrkK6fn7sQCiXOlX1eUIv1F39Yk5LoEKJJZsSvlkba9kkPUbucSb7RIeSyMiLeH4ZDgemnACYL15biJaa12qZoQOnKpM8ZqGfttin01or39XkYmkMjTXaXyaooDi0Yfvdmkwzh4UGijdRsxUsho7KAM'
 
 export default function Signup() {
   const navigate = useNavigate()
@@ -68,14 +66,12 @@ export default function Signup() {
       <section className="hidden lg:flex flex-col justify-center items-center bg-surface-container relative overflow-hidden p-margin-desktop">
         <div className="absolute top-10 left-10">
           <Link to="/" className="font-headline-lg text-headline-lg font-black tracking-tight text-primary">
-            Nazariyen
+            Wiseup
           </Link>
         </div>
-        <div className="absolute -top-20 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
         <div className="relative z-10 flex flex-col items-center max-w-md text-center">
           <div className="mb-base animate-float">
-            <img src={MASCOT} alt="Nazariyen mascot" className="w-64 h-64 object-contain" />
+            <img src={MASCOT} alt="Wiseup mascot" className="w-64 h-64 object-contain" />
           </div>
           <h1 className="font-headline-xl text-headline-xl text-on-background mb-4">Start your learning adventure!</h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant">
@@ -88,7 +84,7 @@ export default function Signup() {
       <section className="flex flex-col justify-center items-center p-margin-mobile md:p-margin-desktop bg-surface relative">
         <div className="lg:hidden absolute top-8 left-margin-mobile flex items-center gap-2">
           <Link to="/" className="font-headline-md text-headline-md font-black tracking-tight text-primary">
-            Nazariyen
+            Wiseup
           </Link>
         </div>
         <div className="w-full max-w-md">
@@ -197,7 +193,7 @@ export default function Signup() {
               disabled={busy}
               className="w-full flex items-center justify-center gap-2 py-3 border border-outline-variant/30 rounded-xl hover:bg-surface-container-low transition-colors font-label-md text-label-md disabled:opacity-60"
             >
-              <img alt="Google" src={GOOGLE_ICON} className="w-5 h-5" />
+              <img alt="Google" src={googleIcon} className="w-5 h-5" />
               {t('auth.google')}
             </button>
 

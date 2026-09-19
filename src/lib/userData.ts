@@ -55,7 +55,7 @@ export type Bookmark = {
 }
 
 // ── Local-mode helpers (used when Firebase isn't configured) ────
-const lsKey = (uid: string, kind: string) => `nazariyen.${uid}.${kind}`
+const lsKey = (uid: string, kind: string) => `wiseup.${uid}.${kind}`
 function lsGet<T>(uid: string, kind: string, fallback: T): T {
   try {
     const raw = localStorage.getItem(lsKey(uid, kind))
